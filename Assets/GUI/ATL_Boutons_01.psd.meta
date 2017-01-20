@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: bb6ab5c028d861945bccfdbef12c6623
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cross_n
+    21300002: v_n
+    21300004: v_d
+    21300006: button_n
+    21300008: cross_h
+    21300010: v_h
+    21300012: cross_d
+    21300014: button_h
+    21300016: cross_p
+    21300018: v_p
+    21300020: interrogation_n
+    21300022: button02_p
+    21300024: close_n
+    21300026: close_h
+    21300028: close_p
+    21300030: interrogation_h
+    21300032: window_background
+    21300034: interrogation_p
+    21300036: button_d
+    21300038: close_d
+    21300040: button02_n
+    21300042: button02_h
+    21300044: button_p
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: cross_n
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: v_n
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: v_d
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 326
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_n
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 409
+        width: 122
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 22, y: 28, z: 28, w: 22}
+    - name: cross_h
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 420
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: v_h
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 326
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cross_d
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 420
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_h
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 307
+        width: 122
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 22, y: 27, z: 28, w: 22}
+    - name: cross_p
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 420
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: v_p
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 326
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: interrogation_n
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_p
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 205
+        width: 122
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 22, y: 28, z: 28, w: 22}
+    - name: close_n
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 171
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: close_h
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 171
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: close_p
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 171
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: interrogation_h
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 232
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: window_background
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1
+        width: 155
+        height: 201
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 14, y: 24, z: 22, w: 13}
+    - name: interrogation_p
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 232
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_d
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63
+        width: 122
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 20, y: 24, z: 24, w: 20}
+    - name: close_d
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 171
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button02_n
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 11, y: 18, z: 13, w: 13}
+    - name: button02_h
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 3
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 11, y: 18, z: 13, w: 13}
+    - name: button02_p
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 3
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 11, y: 18, z: 13, w: 13}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
