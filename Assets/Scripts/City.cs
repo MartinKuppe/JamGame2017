@@ -67,7 +67,7 @@ public class City : MonoBehaviour
     void Start()
     {
         // Register city to PropagandaEmitter (the player) --
-        PropagandaEmitter.RegisterCity(transform.position);
+        PropagandaEmitter.RegisterCity(transform.position, this);
 
         // Not optimal
         Waypoint[] allWaypoints = FindObjectsOfType<Waypoint>();
