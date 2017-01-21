@@ -20,6 +20,7 @@ public class City : MonoBehaviour
     public Waypoint _waypoint;
     private float _rebelSupport = 0; // De 0.0f à 1.0f
     public int _initialRebelFlags = 0;
+    public GameObject _actualLocation;
 
     [Header("UI")]
     public Sprite _loyalistAntSprite;
@@ -70,7 +71,7 @@ public class City : MonoBehaviour
         RebelFlags = _initialRebelFlags;
 
         // Register city to PropagandaEmitter (the player) --
-        PropagandaEmitter.RegisterCity(transform.position, this);
+        PropagandaEmitter.RegisterCity(_actualLocation != null ? _actualLocation.transform.position : transform.position, this);
 
         // Not optimal
         Waypoint[] allWaypoints = FindObjectsOfType<Waypoint>();
