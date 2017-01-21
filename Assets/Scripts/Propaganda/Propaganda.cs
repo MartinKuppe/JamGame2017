@@ -24,14 +24,20 @@ public class Propaganda : MonoBehaviour
 
     void Update()
     {
-        if(_active)
+        var location = PropagandaEmitter.GetLocation();
+        _controls.MoveTo(location);
+
+        if (_active)
         {
             _time += Time.deltaTime;
 
-            Trigger(PropagandaEmitter.GetLocation());
+            Trigger(location);
 
             if (_time > Duration)
+            {
+                _controls.Stop();
                 _active = false;
+            }
         }
     }
 
@@ -47,8 +53,6 @@ public class Propaganda : MonoBehaviour
 
     private void Trigger(Vector3 location)
     {
-        _controls.MoveTo(location);
-
         for (int i = 0; i < _effects.Length; i++)
         {
             _effects[i].OnPropaganda(location, PropagandaEmitter.GetNearCities());
