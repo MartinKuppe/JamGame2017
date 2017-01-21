@@ -9,7 +9,7 @@ public class PropagandaEmitter : Singleton<PropagandaEmitter> {
     public float Range = 5;
 
     [SerializeField]
-    private List<City> _cities = new List<City>();
+    private List<InternalCity> _cities = new List<InternalCity>();
 
 	void Update () {
         for (int i = 0; i < _cities.Count; i++)
@@ -25,24 +25,50 @@ public class PropagandaEmitter : Singleton<PropagandaEmitter> {
     {
         return Instance != null ? Instance.transform.position : new Vector3();
     }
+    
+    public static List<City> GetNearCities()
+    {
+        var list = new List<City>();
 
-    public static void RegisterCity(Vector3 position)
+        if (Instance != null)
+        {
+            for (int i = 0; i < Instance._cities.Count; i++)
+            {
+                var city = Instance._cities[i];
+                float distance = (city.Position - Instance.transform.position).magnitude;
+
+                if (distance <= Instance.Range)
+                {
+                    list.Add(city.City);
+                }
+            }
+        }
+
+        return list;        
+    }
+
+    public static void RegisterCity(Vector3 position, City city)
     {
         if (Instance == null)
             return;
 
-        var city = new City();
-        city.Position = position;
-        Instance._cities.Add(city);
+        Instance._cities.Add(new InternalCity(position, city));
     }
 
     [Serializable]
-    public class City
+    public class InternalCity
     {
         public Vector3 Position;
         public bool Active = false;
         public ParticleControls controls;
-        
+        public City City;
+
+        public InternalCity(Vector3 position, City city)
+        {
+            Position = position;
+            this.City = city;
+        }
+
         public void SetHighlighted(bool active)
         {
             if (active == Active)

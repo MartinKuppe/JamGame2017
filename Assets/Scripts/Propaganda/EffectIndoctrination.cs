@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class EffectIndoctrination : MonoBehaviour, IPropagandaEffect
 {
-    public void OnPropaganda(Vector3 Location)
+    public void OnPropaganda(Vector3 Location, List<City> targets)
     {
-        Debug.Log("Effect_Indoctrination");
+        string debug = "Effect_Indoctrination on ";
+
+        foreach (var city in targets)
+        {
+            debug += city.gameObject.name + " ";
+        }
+
+        Debug.Log(debug);
+
     }
 }

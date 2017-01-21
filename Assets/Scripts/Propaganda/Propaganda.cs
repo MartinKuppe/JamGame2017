@@ -28,12 +28,12 @@ public class Propaganda : MonoBehaviour
 
         for (int i = 0; i < _effects.Length; i++)
         {
-            _effects[i].OnPropaganda(location);
+            _effects[i].OnPropaganda(location, PropagandaEmitter.GetNearCities());
         }
     }
 }
 
 public interface IPropagandaEffect
 {
-    void OnPropaganda(Vector3 Location);
+    void OnPropaganda(Vector3 Location, List<City> targets);
 }
