@@ -54,6 +54,10 @@ public class City : MonoBehaviour
     private const int MAX_TROOPS = 20;
 
     private int _freezeMultiplicity = 0;
+    private float _troopGenerationProgress = 0.0f;
+    private float _supportGenerationProgress = 0.0f;
+    private const float OPTIMAL_TROOP_GENERATION_TIME = 5.0f;
+    private const float OPTIMAL_SUPPORT_GENERATION_TIME = 5.0f;
 
     // ---------------------------------------------------- <summary>
     // The start function.
@@ -110,9 +114,11 @@ public class City : MonoBehaviour
         }
         else
         {
-            // TODO: Draft troops
-            
-            // TODO: Indoctrinate population 
+            // Draft troops
+            GenerateTroops();
+
+            // Indoctrinate population 
+            GenerateSupport();
 
             // AI stuff
             UpdateStrategicInfo();
@@ -325,6 +331,11 @@ public class City : MonoBehaviour
         // Just to be sure we don't send a negative amount
         amount = Mathf.Max(0, amount);
 
+        if (amount == 0) return;
+
+        city.MyDebugLog(city.name+" has "+ city._occupyingForces+" troops, "+ troopsOnTheirWay+" are on their way.");
+        city.MyDebugLog("Sending " + amount + " troops from " + name + " to " + city.name);
+
         // Announce troops to target city
         if ( _occupyingFaction == Affiliation.Loyalists )
         {
@@ -489,6 +500,69 @@ public class City : MonoBehaviour
         foreach (City neighbour in _neighbourCities)
         {
             Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * neighbour.transform.position, Color.blue);
+        }
+    }
+
+    public float SupportNormed
+    {
+        get
+        {
+            if( _occupyingFaction == Affiliation.Loyalists )
+            {
+                return (3 - _rebelSupport) / 3.0f;
+            }
+            else
+            {
+                return _rebelSupport / 3.0f;
+            }
+        }
+    }
+    // ---------------------------------------------------- <summary>
+    // generate troops                                        </summary>
+    // ----------------------------------------------------
+    public void GenerateTroops()
+    {
+        if(SupportNormed == 0.0f)
+        {
+            _troopGenerationProgress = 0.0f;
+            return;
+        }
+
+        float troopGenerationPerSecond = SupportNormed / OPTIMAL_TROOP_GENERATION_TIME;
+        _troopGenerationProgress += troopGenerationPerSecond * TICK_TIME;
+        if(_troopGenerationProgress > 1.0f )
+        {
+            _troopGenerationProgress -= 1.0f;
+
+            int troopsOnTheirWay = (_occupyingFaction == Affiliation.Loyalists) ? _loyalistTroopsOnTheirWayHere : _rebelTroopsOnTheirWayHere;
+            _occupyingForces = Mathf.Min(_occupyingForces, MAX_TROOPS - troopsOnTheirWay);
+            Populate();
+        }
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Generate population support in occupied cities       </summary>
+    // ----------------------------------------------------
+    public void GenerateSupport()
+    {
+        if (SupportNormed == 1.0f) return;
+
+        float supportGenerationPerSecond = (float)_occupyingForces / (float)(MAX_TROOPS * OPTIMAL_SUPPORT_GENERATION_TIME);
+        _supportGenerationProgress += supportGenerationPerSecond * TICK_TIME;
+        if (_supportGenerationProgress > 1.0f)
+        {
+            _supportGenerationProgress -= 1.0f;
+            if (_occupyingFaction == Affiliation.Loyalists)
+            {
+                // Decrease rebel support
+                _rebelSupport = Mathf.Max(0, _rebelSupport - 1);
+            }
+            else
+            {
+                // Increase rebel support
+                _rebelSupport = Mathf.Min(3, _rebelSupport + 1);
+            }
+            Populate();
         }
     }
 }
