@@ -63,7 +63,9 @@ public class SoldierGroup : MonoBehaviour
 
     public void Update()
     {
-        if( Move() )
+        TestIfPlayerNear();
+
+        if ( Move() )
         {
             // We have arrived
             City city = _path[_path.Count - 1]._waypoint._node._city;
@@ -117,5 +119,15 @@ public class SoldierGroup : MonoBehaviour
             PlaceSprites();
         }
         return arrived;
+    }
+
+    private const float ARREST_PLAYER_DISTANCE = 0.5f;
+
+    private void TestIfPlayerNear()
+    {
+        if( _affiliation == Affiliation.Loyalists && (transform.position - Hero.Instance.transform.position).magnitude < ARREST_PLAYER_DISTANCE )
+        {
+            VictoryManager.Instance.GameOver("You were caught by an enemy patrol.");
+        }
     }
 }
