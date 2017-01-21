@@ -10,6 +10,6 @@ public class PropagandaManager : Singleton<PropagandaManager>
     void Start()
     {
         if(CurrentFaction != null)
-            PropagandaPanel.Instance.CreateButtons(CurrentFaction);
+            PropagandaButtonsPanel.Instance.CreateButtons(CurrentFaction);
     }
 }

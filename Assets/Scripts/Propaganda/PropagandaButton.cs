@@ -9,6 +9,7 @@ public class PropagandaButton : MonoBehaviour {
     public Button Button;
     public Image ButtonImage;
     public Image Overlay;
+    public bool active = false;
 
     [SerializeField]
     private Propaganda _propaganda;
@@ -16,13 +17,25 @@ public class PropagandaButton : MonoBehaviour {
     public void Init(Propaganda propaganda)
     {
         _propaganda = propaganda;
-        Overlay.gameObject.SetActive(false);
-        ButtonImage.sprite = _propaganda.Image;
+        ButtonImage.sprite = _propaganda.Poster;
         ButtonImage.type = Image.Type.Simple;
     }
 
     public void Trigger()
     {
         _propaganda.Trigger();
+    }
+
+    public void Display()
+    {
+        PropagandaButtonsPanel.Instance.DisableOthers(this);
+
+        active = !active;
+        PropagandaDescription.SetPropaganda(active ? _propaganda : null);
+    }
+
+    public void Disable()
+    {
+        active = false;
     }
 }

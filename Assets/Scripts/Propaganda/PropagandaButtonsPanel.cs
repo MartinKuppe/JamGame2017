@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropagandaPanel : Singleton<PropagandaPanel>
+public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
 {
     public GameObject ButtonPrefab;
+    public List<PropagandaButton> Buttons = new List<PropagandaButton>();
 
     private void Reset()
     {
         while (transform.childCount > 0)
             Destroy(transform.GetChild(0).gameObject);
+
+        Buttons.Clear();
     } 
 
     public void CreateButtons(Faction faction)
@@ -22,7 +25,20 @@ public class PropagandaPanel : Singleton<PropagandaPanel>
             var go = Instantiate(ButtonPrefab);
             go.transform.SetParent(transform);
             go.transform.localScale = new Vector3(1, 1, 1);
-            go.GetComponent<PropagandaButton>().Init(faction.Propagandas[i]);
+            var button = go.GetComponent<PropagandaButton>();
+            button.Init(faction.Propagandas[i]);
+            Buttons.Add(button);
+        }
+    }
+
+    public void DisableOthers(PropagandaButton active)
+    {
+        foreach (var button in Buttons)
+        {
+            if (button == active)
+                continue;
+
+            button.Disable();
         }
     }
 }
