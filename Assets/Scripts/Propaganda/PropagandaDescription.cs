@@ -168,7 +168,10 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     public void Trigger()
     {
         if (Propaganda != null)
+        {
             Propaganda.Trigger();
+            SetPropaganda(null);
+        }
     }
 
     public static void OnPointerEnters()
