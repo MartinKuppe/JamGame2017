@@ -29,7 +29,7 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
             Buttons.Add(button);
         }
 
-        Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(Buttons[0].Button.gameObject);
+        RefocusControl();
     }
 
     public void DisableOthers(PropagandaButton active)
@@ -39,6 +39,13 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
             if (button == active) continue;
 
             button.Disable();
+        }
+    }
+
+    public void RefocusControl()
+    {
+        if (Buttons.Count > 0) {
+            Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(Buttons[0].Button.gameObject);
         }
     }
 
