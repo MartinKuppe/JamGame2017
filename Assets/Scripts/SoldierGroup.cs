@@ -69,9 +69,7 @@ public class SoldierGroup : MonoBehaviour
             City city = _path[_path.Count - 1]._waypoint._node._city;
             city.ReceiveTroops(_size, _affiliation, _freezeAI);
 
-            //TODO: When attacking, don't start combat yet !
-
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
