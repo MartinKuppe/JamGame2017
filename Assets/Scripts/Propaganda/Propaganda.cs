@@ -19,11 +19,13 @@ public class Propaganda : MonoBehaviour
 
     public void Trigger()
     {
-        Trigger(new Vector3()); // TODO Get coordinates
+        Trigger(PropagandaEmitter.GetLocation());
     }
 
     private void Trigger(Vector3 location)
     {
+        Particles.PlayAt(name, location);
+
         for (int i = 0; i < _effects.Length; i++)
         {
             _effects[i].OnPropaganda(location);
