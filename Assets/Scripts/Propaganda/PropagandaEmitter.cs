@@ -74,6 +74,7 @@ public class PropagandaEmitter : Singleton<PropagandaEmitter> {
             if (active == Active)
                 return;
 
+            /* Disable particles *Snif*
             if(active)
             {
                 controls = Particles.ControlledPlayAt("Highlight", Position);
@@ -81,9 +82,10 @@ public class PropagandaEmitter : Singleton<PropagandaEmitter> {
             else
             {
                 controls.Stop();
-            }
+            }*/
 
             Active = active;
+            City._factionIndicator.Highlighted = active;
         }
     }
 }
