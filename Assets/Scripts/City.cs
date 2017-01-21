@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Faction { Loyalists = 0, Rebels = 1 };
+public enum Affiliation { Loyalists = 0, Rebels = 1 };
 
 ///=================================================================================================================
 ///                                                                                                       <summary>
@@ -15,9 +15,10 @@ public class City : MonoBehaviour
 {
     [Header("Politics")]
     public int _rebelSupport = 0;     // de 0 à 3;
-    public Faction _occupyingFaction;
+    public Affiliation _occupyingFaction;
     public int _occupyingForces = 10;
     public int _attackingForces = 0;
+    public Waypoint _waypoint;
 
     [Header("UI")]
     public Sprite _loyalistAntSprite;
@@ -34,17 +35,54 @@ public class City : MonoBehaviour
 
     public City[] _neighbourCities;
 
+    public SoldierGroup _soldierGroupPrefab;
+
+    // For AI  
+    private int _menacingForces;
+    private int _distanceToEnemy;
+    private int _weakestEnemyForces;
+    private City _weakestEnemy;
+    private int _weakestFriendNeededReinforcement;
+    private City _weakestFriend;
+    private int _indispensableForces;
+    private int _dispensableForces;
+    private int _loyalistTroopsOnTheirWayHere;
+    private int _rebelTroopsOnTheirWayHere;
+    private const int MINIMAL_OCCUPATION_FORCE = 3;
+    private const int ATTACK_TRESHOLD = 5;
+    private const float MENACE_DEPTH_FACTOR = 0.3f;
+    private const int MAX_TROOPS = 20;
+
+    private int _freezeMultiplicity = 0;
+
+    // ---------------------------------------------------- <summary>
+    // The start function.
+    // ----------------------------------------------------
+    void Start()
+    {
+        // Not optimal
+        Waypoint[] allWaypoints = FindObjectsOfType<Waypoint>();
+        float minDistance = Mathf.Infinity;
+        foreach( Waypoint waypoint in allWaypoints )
+        {
+            float distance = (waypoint.transform.position - transform.position).magnitude;
+            if( distance < minDistance)
+            {
+                minDistance = distance;
+                _waypoint = waypoint;
+            }
+        }
+        _waypoint.name += name.Replace("City", "");
+        _waypoint._node._city = this;
+
+    }
 
     // ---------------------------------------------------- <summary>
     // The update function.
     // ----------------------------------------------------
     void Update()
     {
-        // For debug purposes
-        foreach (City neighbour in _neighbourCities)
-        {
-            Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * neighbour.transform.position, Color.blue);
-        }
+        if (IsAIFrozen() ) return;
 
         // Every once in a while, call TickUpdate 
         _tickTimer -= Time.deltaTime;
@@ -100,10 +138,10 @@ public class City : MonoBehaviour
         {
             _flags[i].color = (i < _rebelSupport) ? Color.red : Color.black;
         }
-        _factionIndicator.color = (_occupyingFaction == Faction.Rebels) ? Color.red : Color.black;
+        _factionIndicator.color = (_occupyingFaction == Affiliation.Rebels) ? Color.red : Color.black;
 
         // Update occupying troops
-        Sprite spriteUs = (_occupyingFaction == Faction.Loyalists) ? _loyalistAntSprite : _rebelAntSprite;
+        Sprite spriteUs = (_occupyingFaction == Affiliation.Loyalists) ? _loyalistAntSprite : _rebelAntSprite;
         for (int i = 0; i < _occupyingForcesImages.Length; i++)
         {
             if (i < _occupyingForces)
@@ -118,7 +156,7 @@ public class City : MonoBehaviour
         }
 
         // Update attacking troops
-        Sprite spriteThem = (_occupyingFaction == Faction.Loyalists) ? _rebelAntSprite : _loyalistAntSprite;
+        Sprite spriteThem = (_occupyingFaction == Affiliation.Loyalists) ? _rebelAntSprite : _loyalistAntSprite;
         for (int i = 0; i < _attackingForcesImages.Length; i++)
         {
             if (i < _attackingForces)
@@ -146,7 +184,7 @@ public class City : MonoBehaviour
             _occupyingForces--;
 
             // Display dead ant symbol
-            _occupyingForcesImages[Random.Range(0, _occupyingForces + 1)].sprite = (_occupyingFaction == Faction.Loyalists) ? _deadBlackAntSprite : _deadRedAntSprite;
+            _occupyingForcesImages[Random.Range(0, _occupyingForces + 1)].sprite = (_occupyingFaction == Affiliation.Loyalists) ? _deadBlackAntSprite : _deadRedAntSprite;
 
             // Did the attacker win ?
             if (_occupyingForces == 0)
@@ -154,7 +192,7 @@ public class City : MonoBehaviour
                 // Attacker takes the city
                 _occupyingForces = _attackingForces;
                 _attackingForces = 0;
-                _occupyingFaction = (Faction)(1 - (int)_occupyingFaction);
+                _occupyingFaction = (Affiliation)(1 - (int)_occupyingFaction);
             }
         }
         else
@@ -163,24 +201,11 @@ public class City : MonoBehaviour
             _attackingForces--;
 
             // Display dead ant symbol
-            _attackingForcesImages[Random.Range(0, _attackingForces + 1)].sprite = (_occupyingFaction == Faction.Loyalists) ? _deadRedAntSprite : _deadBlackAntSprite;
+            _attackingForcesImages[Random.Range(0, _attackingForces + 1)].sprite = (_occupyingFaction == Affiliation.Loyalists) ? _deadRedAntSprite : _deadBlackAntSprite;
         }
     }
 
-    // For AI  
-    // TODO: put into header
-    private int _menacingForces;
-    private int _distanceToEnemy;
-    private int _weakestEnemyForces;
-    private City _weakestEnemy;
-    private int _weakestFriendNeededReinforcement;
-    private City _weakestFriend;
-    private int _indispensableForces;
-    private int _dispensableForces;
-    private const int MINIMAL_OCCUPATION_FORCE = 3;
-    private const int ATTACK_TRESHOLD = 5;
-    private const float MENACE_DEPTH_FACTOR = 0.3f;
-    private const int MAX_TROOPS = 20;
+
 
     // ---------------------------------------------------- <summary>
     // Gather information for AI                                   </summary>
@@ -230,7 +255,7 @@ public class City : MonoBehaviour
                 }
 
                 // Check if this friend needs reinforcments
-                int slowMigrationToFront = (neighbour._distanceToEnemy < oldDistanceToEnemy) ? 1 : 0;
+                int slowMigrationToFront = (neighbour._distanceToEnemy < oldDistanceToEnemy) ? 2 : 0;
                 int neededReinforcements = Mathf.Max(slowMigrationToFront, neighbour._menacingForces - neighbour._occupyingForces);
 
                 MyDebugLog("neighbour._distanceToEnemy = " + neighbour._distanceToEnemy);
@@ -277,30 +302,118 @@ public class City : MonoBehaviour
         }
     }
 
+    // ---------------------------------------------------- <summary>
+    // Send troops to a city                                  </summary>
+    // ----------------------------------------------------
     private void SendTroopsTo(int amount, City city)
     {
+        // How many troops are already on their way to that city ?
+        int troopsOnTheirWay = (_occupyingFaction == Affiliation.Loyalists) ? city._loyalistTroopsOnTheirWayHere : city._rebelTroopsOnTheirWayHere;
+
+        // Make sure there's enough space in the target city for the troops
         if (city._occupyingFaction == _occupyingFaction)
         {
-            // Make sure that occupying forces + amount <= MAX_TROOPS
-            amount = Mathf.Min(amount, MAX_TROOPS - city._occupyingForces);
+            // Make sure that occupying forces + amount + troops on their way <= MAX_TROOPS
+            amount = Mathf.Min(amount, MAX_TROOPS - city._occupyingForces - troopsOnTheirWay);
         }
         else
         {
-            // Make sure that attacking forces + amount <= MAX_TROOPS
-            amount = Mathf.Min(amount, MAX_TROOPS - city._attackingForces);
+            // Make sure that attacking forces + amount + troops on their way <= MAX_TROOPS
+            amount = Mathf.Min(amount, MAX_TROOPS - city._attackingForces - troopsOnTheirWay);
+        }
+
+        // Just to be sure we don't send a negative amount
+        amount = Mathf.Max(0, amount);
+
+        // Announce troops to target city
+        if ( _occupyingFaction == Affiliation.Loyalists )
+        {
+            // Reserve space for loyalist troops
+            city._loyalistTroopsOnTheirWayHere += amount;
+        }
+        else
+        {
+            // Reserve space for rebel troops
+            city._rebelTroopsOnTheirWayHere += amount;
         }
 
         // Deploy troops
-        _occupyingForces -= amount;
+        List<Node> path = Pathfinder.Instance.FindPath(_waypoint._node, city._waypoint._node);
+        StartCoroutine(DeployTroops(path, amount));
 
-        //TODO: not immediately
-        city.ReceiveTroops(amount, _occupyingFaction);
+        // For debug purposes
+        //DebugDisplayPathTo(city);
     }
 
-    private void ReceiveTroops(int amount, Faction faction )
+    // ---------------------------------------------------- <summary>
+    // Put troops on the map by groups of 2                 </summary>
+    // ----------------------------------------------------
+    private IEnumerator DeployTroops(List<Node> path, int totalAmount)
     {
+        // Freeze AI of this city
+        FreezeAI();
+
+        int remainingAmount = totalAmount;
+        while (remainingAmount > 0 )
+        {
+            // Determine of next group will freeze or unfreeze the AI
+            bool? freezeAI = null;
+            if (totalAmount > 2)
+            {
+                // First group will freeze AI of target city when it arrives 
+                if (remainingAmount == totalAmount) freezeAI = true;
+
+                // Last group will unfreeze AI of target city when it arrives
+                if (remainingAmount <= 2) freezeAI = false;
+            }
+
+            // Deploy one or two soldiers
+            int deployedNow = Mathf.Min(2, remainingAmount);
+            SoldierGroup group = Instantiate<SoldierGroup>(_soldierGroupPrefab);
+            group.Deploy(_occupyingFaction, deployedNow, path, freezeAI);
+
+            // Update remainoing forces
+            remainingAmount -= deployedNow;
+            _occupyingForces -= deployedNow;
+
+            // populate the UI (not done by UpdateTick because frozen)
+            Populate();
+
+            // Wait till the group is at a distance of SoldierGroup.SPRITE_DISTANCE
+            yield return new WaitForSeconds( SoldierGroup.SPRITE_DISTANCE / SoldierGroup.SPEED);
+        }
+
+        // Unfreeze AI of this city
+        UnfreezeAI();
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Some soldiers just entered the city.               </summary>
+    // ----------------------------------------------------
+    public void ReceiveTroops(int amount, Affiliation faction, bool? freezeAI )
+    {
+        // Reduce troops on their way
+        if (faction == Affiliation.Loyalists)
+        {
+            _loyalistTroopsOnTheirWayHere -= amount;
+        }
+        else
+        {
+            _rebelTroopsOnTheirWayHere -= amount;
+        }
+
+        // freeze / unfreeze AI
+        if(freezeAI == true)
+        {
+            FreezeAI();
+        }
+        else if( freezeAI == false)
+        {
+            UnfreezeAI();
+        }
+
         //TODO: surplus troops look elsewhere
-        if(faction == _occupyingFaction)
+        if (faction == _occupyingFaction)
         {
             // Receiving reinforcements
             _occupyingForces = Mathf.Min(_occupyingForces + amount, MAX_TROOPS );
@@ -310,15 +423,72 @@ public class City : MonoBehaviour
             // Being attacked
             _attackingForces = Mathf.Min(_attackingForces + amount, MAX_TROOPS);
         }
+        Populate();
     }
 
+    // ---------------------------------------------------- <summary>
+    // Freeze the AI.                                        </summary>
+    // ----------------------------------------------------
+    public void FreezeAI()
+    {
+        _freezeMultiplicity++;
+    }
 
+    // ---------------------------------------------------- <summary>
+    // Unfreeze the AI (except if it was frozen several times)  </summary>
+    // ----------------------------------------------------
+    public void UnfreezeAI()
+    {
+        _freezeMultiplicity--;
+    }
+
+    // ---------------------------------------------------- <summary>
+    // is the AI frozen ?                                     </summary>
+    // ----------------------------------------------------
+    public bool IsAIFrozen()
+    {
+        return (_freezeMultiplicity>0);
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Draw debug stuff                                    </summary>
+    // ----------------------------------------------------
+    private void DebugDisplayPathTo(City otherCity)
+    {
+        List<Node> path = Pathfinder.Instance.FindPath(_waypoint._node, otherCity._waypoint._node);
+        if (path == null)
+        {
+            Debug.LogWarning("Couldn't find path between " + name + " and " + otherCity.name);
+            return;
+        }
+        for (int i = 0; i < path.Count - 1; i++)
+        {
+            Debug.DrawLine(path[i]._position, path[i + 1]._position, Color.red, 0.5f);
+        }
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Write stuff to Debug.Log iff "enable My Debug Log" is checked      </summary>
+    // ----------------------------------------------------
     public bool _enableMyDebugLog = false;
     private void MyDebugLog( string text )
     {
         if(_enableMyDebugLog)
         {
             Debug.Log(text);
+        }
+    }
+    // ---------------------------------------------------- <summary>
+    // Draw lines to neighbour cities                     </summary>
+    // ----------------------------------------------------
+    void OnDrawGizmos()
+    {
+        if (Application.isPlaying) return;
+
+        // For debug purposes
+        foreach (City neighbour in _neighbourCities)
+        {
+            Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * neighbour.transform.position, Color.blue);
         }
     }
 }

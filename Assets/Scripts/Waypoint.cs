@@ -20,6 +20,8 @@ public class Waypoint : MonoBehaviour {
     public List<Waypoint> previousWaypoints = new List<Waypoint>();
     public List<Waypoint> nextWaypoints = new List<Waypoint>();
 
+    public Node _node;
+
     public List<Waypoint> LinkedWaypoints
     {
         get
@@ -138,5 +140,20 @@ public class Waypoint : MonoBehaviour {
         }
 
         return res;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (Application.isPlaying) return;
+
+        // For debug purposes
+        foreach (Waypoint waypoint in nextWaypoints)
+        {
+            Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * waypoint.transform.position, Color.magenta);
+        }
+        foreach (Waypoint waypoint in previousWaypoints)
+        {
+            Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * waypoint.transform.position, Color.red);
+        }
     }
 }
