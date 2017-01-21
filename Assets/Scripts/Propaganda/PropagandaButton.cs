@@ -26,6 +26,21 @@ public class PropagandaButton : MonoBehaviour {
         _propaganda.Trigger();
     }
 
+    void Update()
+    {
+        float percent = _propaganda.Overlay;
+
+        if (percent == 0)
+        {
+            Overlay.gameObject.SetActive(false);
+        }
+        else
+        {
+            Overlay.gameObject.SetActive(true);
+            Overlay.fillAmount = percent;
+        }
+    }
+
     public void Display()
     {
         PropagandaButtonsPanel.Instance.DisableOthers(this);

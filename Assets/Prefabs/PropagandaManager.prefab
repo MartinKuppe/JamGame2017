@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4121961998759174}
   - component: {fileID: 114145297210737858}
+  - component: {fileID: 114923453206329240}
   m_Layer: 0
   m_Name: JoinTheRebels
   m_TagString: Untagged
@@ -36,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4257939470365864}
   - component: {fileID: 114777909712291716}
+  - component: {fileID: 114898212491936224}
   m_Layer: 0
   m_Name: JoinTheTroops
   m_TagString: Untagged
@@ -52,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753139015855554}
   - component: {fileID: 114721705799209324}
-  - component: {fileID: 114406347091612990}
+  - component: {fileID: 114163785845367296}
   m_Layer: 0
   m_Name: Indoctrination
   m_TagString: Untagged
@@ -85,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4121026188790470}
   - component: {fileID: 114802330677538790}
+  - component: {fileID: 114217703343953496}
   m_Layer: 0
   m_Name: Agitation
   m_TagString: Untagged
@@ -132,6 +135,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4954046409323392}
   - component: {fileID: 114725846989869334}
+  - component: {fileID: 114599406234250826}
+  - component: {fileID: 114135832103200960}
   m_Layer: 0
   m_Name: Conscription
   m_TagString: Untagged
@@ -150,7 +155,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4121961998759174
 Transform:
@@ -163,7 +168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4257939470365864
 Transform:
@@ -176,7 +181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4314799673552050
 Transform:
@@ -217,10 +222,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4753139015855554}
-  - {fileID: 4257939470365864}
-  - {fileID: 4121961998759174}
-  - {fileID: 4954046409323392}
   - {fileID: 4121026188790470}
+  - {fileID: 4257939470365864}
+  - {fileID: 4954046409323392}
+  - {fileID: 4121961998759174}
   m_Father: {fileID: 4314799673552050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -250,6 +255,20 @@ Transform:
   m_Father: {fileID: 4488407481191998}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114135832103200960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802666983752820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9135e9e8015fae1458fd8c00da1cf2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inRebelCities: 1
+  _inLoyalistCities: 0
+  _supportPerSecond: -0.1
 --- !u!114 &114145297210737858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,9 +282,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
   Name: Call to rebellion
+  Duration: 10
   Description: '<b>Defeat the tyranny!</b>
 
     It''s very bad, you know...'
+--- !u!114 &114163785845367296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230623410006680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9135e9e8015fae1458fd8c00da1cf2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inRebelCities: 1
+  _inLoyalistCities: 0
+  _supportPerSecond: 0.1
+--- !u!114 &114217703343953496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577192566007184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9135e9e8015fae1458fd8c00da1cf2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inRebelCities: 0
+  _inLoyalistCities: 1
+  _supportPerSecond: 0.1
 --- !u!114 &114306220516223112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,17 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentFaction: {fileID: 114538596166242696}
---- !u!114 &114406347091612990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1230623410006680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30840312e8f15c14f95851960eacf41c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114538596166242696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +338,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Propagandas: []
+--- !u!114 &114599406234250826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802666983752820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4915fbf5fdd023c4e8a0ea68c5303472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _proportionalToSupport: 0
+  _soldiersPerSecond: 1
 --- !u!114 &114721705799209324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,7 +364,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 66f5754d9b77348439aea2fdf390efed, type: 3}
   Name: Indoctrination
-  Description: I want you to think <b>like me</b>!
+  Duration: 10
+  Description: 'Increases support in rebel-controlled cities.
+
+    <i>Ants of the hill, unite!</i>
+
+'
 --- !u!114 &114725846989869334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: f1de539340e9e1e44945839796be9895, type: 3}
   Name: Conscription
+  Duration: 10
   Description: 'What is Conscription, again?
 
     Oh, yeah, army. Whatever...'
@@ -344,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 494ee1e203b24724cabb7da536e6cf8c, type: 3}
   Name: Join the troops
+  Duration: 10
   Description: My army needs you!
 --- !u!114 &114802330677538790
 MonoBehaviour:
@@ -358,6 +415,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 542a2d32c84c9974fa3c8284029fecc3, type: 3}
   Name: Agitation
-  Description: 'Agitate the flag!
+  Duration: 10
+  Description: 'Increases support in government-controlled cities.
 
-    The color doesn''t matter.'
+    <i>Stand up for your rights!</i>
+
+'
+--- !u!114 &114898212491936224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135652100047392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4915fbf5fdd023c4e8a0ea68c5303472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _proportionalToSupport: 1
+  _soldiersPerSecond: 0.3
+--- !u!114 &114923453206329240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033917564556324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9471bc8109c1d5f48920c21d52cef746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probabilityFactor: 0.1

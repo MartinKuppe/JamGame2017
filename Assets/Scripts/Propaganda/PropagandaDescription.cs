@@ -8,6 +8,7 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     public Image Poster;
     public Text Title;
     public Text Description;
+    public Button Broadcast;
 
     [Header("State")]
     public Propaganda Propaganda;
@@ -16,6 +17,8 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     public float Distance;
     public float Duration = 0.5f;
     public AnimationCurve Curve;
+
+    private bool _ongoingPropaganda = false; 
 
     private uint _animationKey;
     private float _time;
@@ -45,9 +48,11 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
         _state = State.Outside;
     }
 	
-	void Update () {
+	void Update ()
+    {
+        UpdateButtonState();
 
-        if(Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             if (_state == State.Inside)
             {
@@ -164,5 +169,26 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     {
         if (Propaganda != null)
             Propaganda.Trigger();
+    }
+
+    public static void OnPointerEnters()
+    {
+        
+    }
+
+    public void UpdateButtonState()
+    {
+        Broadcast.interactable = !_ongoingPropaganda && Propaganda != null && Propaganda.Usable;
+    }
+
+    public static void SetOngoingPropaganda(bool active)
+    {
+        Instance._ongoingPropaganda = active;
+        Instance.UpdateButtonState();
+    }
+
+    public static bool GetOngoingPropaganda()
+    {
+        return Instance._ongoingPropaganda;
     }
 }
