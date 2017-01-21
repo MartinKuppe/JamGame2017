@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: FX_Highlight
   m_EditorClassIdentifier: 
   Id: Highlight
-  ParticlePrefab: {fileID: 1017371789082794, guid: 6bc54fb19438c5e479607316f96bf7d1,
-    type: 2}
+  ParticlePrefab: {fileID: 0}
   MaxInstance: 6
