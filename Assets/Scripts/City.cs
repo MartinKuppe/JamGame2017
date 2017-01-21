@@ -59,6 +59,8 @@ public class City : MonoBehaviour
     private const float OPTIMAL_TROOP_GENERATION_TIME = 5.0f;
     private const float OPTIMAL_SUPPORT_GENERATION_TIME = 5.0f;
 
+    private float _sendPatrolCooldown = 0.0f;
+
     // ---------------------------------------------------- <summary>
     // The start function.
     // ----------------------------------------------------
@@ -87,6 +89,11 @@ public class City : MonoBehaviour
     void Update()
     {
         if (IsAIFrozen() ) return;
+
+        if( CheckIfPlayerNearby() )
+        {
+            return;
+        }
 
         // Every once in a while, call TickUpdate 
         _tickTimer -= Time.deltaTime;
@@ -333,6 +340,8 @@ public class City : MonoBehaviour
 
         if (amount == 0) return;
 
+        _dispensableForces -= amount;
+
         city.MyDebugLog(city.name+" has "+ city._occupyingForces+" troops, "+ troopsOnTheirWay+" are on their way.");
         city.MyDebugLog("Sending " + amount + " troops from " + name + " to " + city.name);
 
@@ -564,5 +573,61 @@ public class City : MonoBehaviour
             }
             Populate();
         }
+    }
+
+    private const float INTERCEPT_PLAYER_DISTANCE = 0.5f;
+
+    private bool CheckIfPlayerNearby()
+    {
+        if (_occupyingFaction == Affiliation.Rebels) return false;
+
+        if(_sendPatrolCooldown > 0)
+        {
+            _sendPatrolCooldown -= Time.deltaTime;
+            return false;
+        }
+
+        foreach( Node node in _waypoint._node._neighbours )
+        {
+            if( (node._position - Hero.Instance.transform.position ).magnitude < INTERCEPT_PLAYER_DISTANCE 
+                && !IsAIFrozen()
+                && !IsUnderAttack() 
+                && _occupyingForces >= 2 + MINIMAL_OCCUPATION_FORCE )
+            {
+                SendPatrolToNode(node);
+                _sendPatrolCooldown = 5.0f;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Send troops to a city                                  </summary>
+    // ----------------------------------------------------
+    private void SendPatrolToNode(Node node)
+    {
+        int amount = 2;
+
+        _dispensableForces -= amount;
+
+        // Announce troops to myself
+        if (_occupyingFaction == Affiliation.Loyalists)
+        {
+            // Reserve space for loyalist troops
+            _loyalistTroopsOnTheirWayHere += amount;
+        }
+        else
+        {
+            // Reserve space for rebel troops
+            _rebelTroopsOnTheirWayHere += amount;
+        }
+
+        // Deploy troops for patrol
+        List<Node> path = new List<Node>();
+        path.Add(this._waypoint._node);
+        path.Add(node);
+        path.Add(this._waypoint._node);
+        StartCoroutine(DeployTroops(path, amount));
     }
 }
