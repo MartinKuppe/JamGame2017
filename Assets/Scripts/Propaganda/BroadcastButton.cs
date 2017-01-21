@@ -27,9 +27,10 @@ public class BroadcastButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private void Update()
     {
-        backgroundScale = pointerIsOnButton ? backgroundScale + 0.02f : 1;
+        bool blocked = PropagandaDescription.GetOngoingPropaganda();
+        backgroundScale = pointerIsOnButton && !blocked ? backgroundScale + 0.02f : 1;
         if (backgroundScale > 2.5) backgroundScale = 1;
-
+        
         backgroundImage.rectTransform.localScale = new Vector3(backgroundScale, backgroundScale);
     }
 }

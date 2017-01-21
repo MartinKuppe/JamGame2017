@@ -419,7 +419,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114835906658031344}
   m_HandleRect: {fileID: 224641210744263422}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -521,7 +521,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.297}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -534,7 +534,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 114432878636790576}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -686,6 +686,7 @@ MonoBehaviour:
   Poster: {fileID: 114004631144926580}
   Title: {fileID: 114716723260106016}
   Description: {fileID: 114790357311567324}
+  Broadcast: {fileID: 114470173840145436}
   Propaganda: {fileID: 0}
   WantedPropaganda: {fileID: 0}
   Distance: 290
