@@ -29,6 +29,8 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
             button.Init(faction.Propagandas[i]);
             Buttons.Add(button);
         }
+
+        Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(Buttons[0].Button.gameObject);
     }
 
     public void DisableOthers(PropagandaButton active)
