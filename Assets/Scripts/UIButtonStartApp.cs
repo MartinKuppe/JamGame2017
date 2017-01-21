@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 ///=================================================================================================================
 ///                                                                                                       <summary>
@@ -16,12 +17,12 @@ public class UIButtonStartApp : MonoBehaviour
     ///-------------------------------------------------------
     public void OnClicked()
     {
-        Application.LoadLevel(Application.loadedLevel + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 	
 	public void LaunchNamedLevel(string levelName)
 	{
-		Application.LoadLevel(levelName);
+        SceneManager.LoadScene(levelName);
 	}
 }
 
