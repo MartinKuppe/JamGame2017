@@ -46,8 +46,11 @@ public class City : MonoBehaviour
     private City _weakestEnemy;
     private int _weakestFriendNeededReinforcement;
     private City _weakestFriend;
-    private int _indispensableForces;
-    private int _dispensableForces;
+    private int _indispensableDefenseForces;
+    private int _dispensableDefenseForces;
+    private int _perceivedCounterattackForces;
+    private int _indispensableAttackForces;
+    private int _dispensableAttackForces;
     private int _loyalistTroopsOnTheirWayHere;
     private int _rebelTroopsOnTheirWayHere;
     private const int MINIMAL_OCCUPATION_FORCE = 3;
@@ -62,6 +65,9 @@ public class City : MonoBehaviour
     private const float OPTIMAL_SUPPORT_GENERATION_TIME = 120.0f;
 
     private float _sendPatrolCooldown = 0.0f;
+    public float SelfEsteem { get; set; }
+    public float ForceOfDefenders { get; set; }
+    public float ForceOfAttackers { get; set; }
 
     // ---------------------------------------------------- <summary>
     // The start function.
@@ -88,6 +94,9 @@ public class City : MonoBehaviour
         _waypoint.name += name.Replace("City", "");
         _waypoint._node._city = this;
 
+        SelfEsteem = 1.0f;
+        ForceOfDefenders = 1.0f;
+        ForceOfAttackers = 1.0f;
     }
 
     // ---------------------------------------------------- <summary>
@@ -108,6 +117,11 @@ public class City : MonoBehaviour
         {
             _tickTimer = TICK_TIME;
             TickUpdate();
+
+            // Modifiers can only be used in one tick.
+            SelfEsteem = 1.0f;
+            ForceOfDefenders = 1.0f;
+            ForceOfAttackers = 1.0f;
         }
 
     }
@@ -265,6 +279,7 @@ public class City : MonoBehaviour
     private void UpdateAttack()
     {
         float attackerOdds = Mathf.Clamp((float)_attackingForces / (float)(_attackingForces / _occupyingForces), 0.4f, 0.6f);
+        attackerOdds *= ForceOfAttackers / ForceOfDefenders;
 
         if (Random.value <= attackerOdds)
         {
@@ -305,6 +320,7 @@ public class City : MonoBehaviour
         int oldDistanceToEnemy = _distanceToEnemy;
         _distanceToEnemy = 99999;
         _weakestEnemyForces = 9999999;
+        _weakestEnemy = null;
         _weakestFriendNeededReinforcement = 0;
         _weakestFriend = null;
         DEBUG_INFO = "";
@@ -369,23 +385,28 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     private void MakeStrategicDecisions()
     {
-         _indispensableForces = Mathf.Max(MINIMAL_OCCUPATION_FORCE, _menacingForces);
-         _dispensableForces = Mathf.Max(0, _occupyingForces - _indispensableForces);
-
-
+        // How much attack forces do I have ?
+        _perceivedCounterattackForces = (int)((_menacingForces - _weakestEnemyForces) / SelfEsteem);
+        _indispensableAttackForces = Mathf.Max(MINIMAL_OCCUPATION_FORCE, _perceivedCounterattackForces);
+        _dispensableAttackForces = Mathf.Max(0, _occupyingForces - _indispensableAttackForces);
+ 
         // Check attack opportunities
-        if ( _dispensableForces >= _weakestEnemyForces + ATTACK_TRESHOLD)
+        if (_dispensableAttackForces * SelfEsteem  >= _weakestEnemyForces + ATTACK_TRESHOLD && _weakestEnemy != null )
         {
             DEBUG_INFO = " Attacking " + _weakestEnemy.name;
-            SendTroopsTo(_dispensableForces, _weakestEnemy);
+            SendTroopsTo(_dispensableAttackForces, _weakestEnemy);
             return;
         }
 
+        // How much defense forces do I have ?
+        _indispensableDefenseForces = Mathf.Max(MINIMAL_OCCUPATION_FORCE, _menacingForces);
+        _dispensableDefenseForces = Mathf.Max(0, _occupyingForces - _indispensableDefenseForces);
+
         // Check neighbours in need
-        if (_weakestFriend != null && _dispensableForces >= 0)
+        if (_weakestFriend != null && _dispensableDefenseForces >= 0)
         {
             DEBUG_INFO = " Reinforcing "+ _weakestFriend.name;
-            SendTroopsTo(Mathf.Min(_dispensableForces, _weakestFriendNeededReinforcement), _weakestFriend);
+            SendTroopsTo(Mathf.Min(_dispensableDefenseForces, _weakestFriendNeededReinforcement), _weakestFriend);
             return;
         }
     }
@@ -415,7 +436,7 @@ public class City : MonoBehaviour
 
         if (amount == 0) return;
 
-        _dispensableForces -= amount;
+        _dispensableDefenseForces -= amount;
 
         city.MyDebugLog(city.name+" has "+ city._occupyingForces+" troops, "+ troopsOnTheirWay+" are on their way.");
         city.MyDebugLog("Sending " + amount + " troops from " + name + " to " + city.name);
@@ -433,7 +454,7 @@ public class City : MonoBehaviour
         }
 
         // Deploy troops
-        List<Node> path = Pathfinder.Instance.FindPath(_waypoint._node, city._waypoint._node);
+        List<Node> path = Pathfinder.Instance.FindPath(_waypoint._node, city._waypoint._node, _occupyingFaction);
         StartCoroutine(DeployTroops(path, amount));
 
         // For debug purposes
@@ -546,11 +567,19 @@ public class City : MonoBehaviour
     }
 
     // ---------------------------------------------------- <summary>
+    // is the city next to an enemy city                                     </summary>
+    // ----------------------------------------------------
+    public bool IsFrontCity()
+    {
+        return (_distanceToEnemy == 1);
+    }
+
+    // ---------------------------------------------------- <summary>
     // Draw debug stuff                                    </summary>
     // ----------------------------------------------------
     private void DebugDisplayPathTo(City otherCity)
     {
-        List<Node> path = Pathfinder.Instance.FindPath(_waypoint._node, otherCity._waypoint._node);
+        List<Node> path = Pathfinder.Instance.FindPath(_waypoint._node, otherCity._waypoint._node, _occupyingFaction);
         if (path == null)
         {
             Debug.LogWarning("Couldn't find path between " + name + " and " + otherCity.name);
@@ -593,10 +622,8 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     public void Draft(float soldiers )
     {
-        if (soldiers == 0.0f)
-        {
-            return;
-        }
+        if (soldiers <= 0.0f) return;
+        if (IsUnderAttack()) return;
 
         _troopGenerationProgress += soldiers;
         if (_troopGenerationProgress > 1.0f)
@@ -607,6 +634,95 @@ public class City : MonoBehaviour
             _occupyingForces = Mathf.Min(_occupyingForces +1, MAX_TROOPS - troopsOnTheirWay);
             Populate();
         }
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Reduce troops troops                                        </summary>
+    // ----------------------------------------------------
+    public void Sabotage(float soldiers)
+    {
+        if (soldiers <= 0.0f) return;
+        if (IsUnderAttack()) return;
+
+        _troopGenerationProgress -= soldiers;
+        if (_troopGenerationProgress < 0.0f)
+        {
+            _troopGenerationProgress += 1.0f;
+            if (_occupyingForces > 1)
+            {
+                _occupyingForces--;
+                _occupyingForcesImages[Random.Range(0, _occupyingForces + 1)].sprite = (_occupyingFaction == Affiliation.Loyalists) ? _deadBlackAntSprite : _deadRedAntSprite;
+                _tickTimer = TICK_TIME;
+            }
+        }
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Reduce troops troops                                        </summary>
+    // ----------------------------------------------------
+    public void Desert(float soldiers)
+    {
+        if (soldiers <= 0.0f) return;
+        if (IsUnderAttack()) return;
+
+        _troopGenerationProgress -= soldiers;
+        if (_troopGenerationProgress < 0.0f)
+        {
+            _troopGenerationProgress += 1.0f;
+            if (_occupyingForces > 1  )
+            {
+                City city = FindCityToDesertTo();
+                if( city != null )
+                {
+                    SendDeserterTo(city);
+                }
+            }
+        }
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Reduce troops troops                                        </summary>
+    // ----------------------------------------------------
+    public City FindCityToDesertTo()
+    {
+        Debug.Assert(_occupyingFaction == Affiliation.Loyalists); // Not coded both cases
+
+        if(_weakestEnemy != null && _weakestEnemy._occupyingForces + _weakestEnemy._rebelTroopsOnTheirWayHere < MAX_TROOPS )
+        {
+            return _weakestEnemy;
+        }
+
+        foreach( Node neighbour in _waypoint._node._neighbours )
+        {
+            City city = neighbour._city;
+            if(city != null 
+                && city._occupyingFaction != _occupyingFaction
+                && city._occupyingForces + city._rebelTroopsOnTheirWayHere < MAX_TROOPS)
+            {
+                return city;
+            }
+        }
+        return null;
+    }
+
+    // ---------------------------------------------------- <summary>
+    // Put troops on the map by groups of 2                 </summary>
+    // ----------------------------------------------------
+    private void SendDeserterTo( City enemyCity )
+    {
+        Affiliation desertersFaction = (Affiliation)(1 - (int)_occupyingFaction);
+        List<Node> path = Pathfinder.Instance.FindPath(this._waypoint._node, enemyCity._waypoint._node, desertersFaction);
+
+        // Deploy one enemy soldier
+        SoldierGroup group = Instantiate<SoldierGroup>(_soldierGroupPrefab);
+        group.Deploy(desertersFaction, 1, path, null);
+
+        enemyCity._rebelTroopsOnTheirWayHere++;
+
+        _occupyingForces--;
+
+        // populate the UI (not done by UpdateTick because frozen)
+        Populate();
     }
 
     // ---------------------------------------------------- <summary>
@@ -662,7 +778,7 @@ public class City : MonoBehaviour
     {
         int amount = 2;
 
-        _dispensableForces -= amount;
+        _dispensableDefenseForces -= amount;
 
         // Announce troops to myself
         if (_occupyingFaction == Affiliation.Loyalists)
