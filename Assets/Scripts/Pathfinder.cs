@@ -97,7 +97,7 @@ public class Pathfinder : Singleton<Pathfinder>
         }
     }
 
-    public List<Node> FindPath( Node start, Node destination )
+    public List<Node> FindPath( Node start, Node destination, Affiliation affiliation )
     {
         // Prepare nodes
         List<Node> openNodes = new List<Node>();
@@ -142,6 +142,10 @@ public class Pathfinder : Singleton<Pathfinder>
             foreach ( Node neighbour in currentNode._neighbours)
             {
                 if (neighbour._closed) continue;
+
+                if (neighbour._city != null 
+                    && neighbour != destination
+                    && neighbour._city._occupyingFaction != affiliation) continue; // Don't pass in front of enemy cities
 
                 float tentativeG = currentNode._g + currentNode.HeuristicDistanceTo(neighbour);
                 if( !openNodes.Contains(neighbour))

@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1728018640872088}
   m_IsPrefabParent: 1
+--- !u!1 &1032860616478854
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4978852869873042}
+  - component: {fileID: 114007955376477504}
+  - component: {fileID: 114322173244573690}
+  m_Layer: 0
+  m_Name: Offensive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1033917564556324
 GameObject:
   m_ObjectHideFlags: 1
@@ -20,9 +37,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4121961998759174}
   - component: {fileID: 114145297210737858}
-  - component: {fileID: 114923453206329240}
+  - component: {fileID: 114629347333524234}
   m_Layer: 0
-  m_Name: JoinTheRebels
+  m_Name: Intimidation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +62,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1144236966073990
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4408816446858446}
+  - component: {fileID: 114568701989831020}
+  - component: {fileID: 114923453206329240}
+  m_Layer: 0
+  m_Name: JoinTheRebels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1230623410006680
 GameObject:
   m_ObjectHideFlags: 1
@@ -57,6 +91,40 @@ GameObject:
   - component: {fileID: 114163785845367296}
   m_Layer: 0
   m_Name: Indoctrination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1247993875363724
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4935842635692674}
+  - component: {fileID: 114681452787311610}
+  - component: {fileID: 114851468784028910}
+  m_Layer: 0
+  m_Name: Encouragement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1449022031612594
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4484009190349932}
+  - component: {fileID: 114727417760161436}
+  - component: {fileID: 114313133051318844}
+  m_Layer: 0
+  m_Name: Prudence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +146,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1522009740142544
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4370299614271946}
+  - component: {fileID: 114930536584542160}
+  - component: {fileID: 114697816920996676}
+  m_Layer: 0
+  m_Name: Semer le doute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1577192566007184
 GameObject:
   m_ObjectHideFlags: 1
@@ -90,6 +175,40 @@ GameObject:
   - component: {fileID: 114217703343953496}
   m_Layer: 0
   m_Name: Agitation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1666851291295066
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4357922589082354}
+  - component: {fileID: 114532856401303024}
+  - component: {fileID: 114941265805803492}
+  m_Layer: 0
+  m_Name: Provocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1671433503313908
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4198895825338484}
+  - component: {fileID: 114989581305614786}
+  - component: {fileID: 114137169884407248}
+  m_Layer: 0
+  m_Name: Deserters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,6 +263,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1922135282330934
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4648296980411506}
+  - component: {fileID: 114962604936965150}
+  - component: {fileID: 114064105252558762}
+  m_Layer: 0
+  m_Name: Sabotage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1962253825527044
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4654604206446676}
+  - component: {fileID: 114163213517585066}
+  - component: {fileID: 114436676747561680}
+  m_Layer: 0
+  m_Name: Demoralization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4121026188790470
 Transform:
   m_ObjectHideFlags: 1
@@ -168,7 +321,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 4
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4198895825338484
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671433503313908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4257939470365864
 Transform:
@@ -198,6 +364,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4357922589082354
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666851291295066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4358143447452750
 Transform:
   m_ObjectHideFlags: 1
@@ -210,6 +389,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4314799673552050}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4370299614271946
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522009740142544}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4408816446858446
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144236966073990}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4484009190349932
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449022031612594}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4488407481191998
 Transform:
@@ -225,9 +443,44 @@ Transform:
   - {fileID: 4121026188790470}
   - {fileID: 4257939470365864}
   - {fileID: 4954046409323392}
+  - {fileID: 4408816446858446}
+  - {fileID: 4648296980411506}
+  - {fileID: 4198895825338484}
+  - {fileID: 4935842635692674}
+  - {fileID: 4978852869873042}
+  - {fileID: 4357922589082354}
+  - {fileID: 4654604206446676}
+  - {fileID: 4484009190349932}
+  - {fileID: 4370299614271946}
   - {fileID: 4121961998759174}
   m_Father: {fileID: 4314799673552050}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4648296980411506
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922135282330934}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4654604206446676
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962253825527044}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4753139015855554
 Transform:
@@ -242,6 +495,19 @@ Transform:
   m_Father: {fileID: 4488407481191998}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4935842635692674
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247993875363724}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4954046409323392
 Transform:
   m_ObjectHideFlags: 1
@@ -255,6 +521,46 @@ Transform:
   m_Father: {fileID: 4488407481191998}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4978852869873042
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032860616478854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488407481191998}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114007955376477504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032860616478854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: Offensive
+--- !u!114 &114064105252558762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922135282330934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754a1c4b1ef36354f93f953ed0ac4dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _idealKillsPerSecond: 1
 --- !u!114 &114135832103200960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +575,18 @@ MonoBehaviour:
   _inRebelCities: 1
   _inLoyalistCities: 0
   _supportPerSecond: -0.1
+--- !u!114 &114137169884407248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671433503313908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db45d80cc458ea408abae0b14faad40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _idealDesertsPerSecond: 1
 --- !u!114 &114145297210737858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,9 +601,28 @@ MonoBehaviour:
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
   Name: Call to rebellion
   Duration: 10
-  Description: '<b>Defeat the tyranny!</b>
+  Description: 'intimidation
 
-    It''s very bad, you know...'
+
+'
+--- !u!114 &114163213517585066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962253825527044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: 'Demoralisation
+
+
+'
 --- !u!114 &114163785845367296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +663,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentFaction: {fileID: 114538596166242696}
+--- !u!114 &114313133051318844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449022031612594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42661ab5781821c40b899fd1b6329e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 1
+  _selfEsteem: 0.5
+--- !u!114 &114322173244573690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032860616478854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 1
+  _attackForce: 3
+  _defenseForce: 0.5
+--- !u!114 &114436676747561680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962253825527044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42661ab5781821c40b899fd1b6329e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 0
+  _selfEsteem: 0.5
+--- !u!114 &114532856401303024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666851291295066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: 'Provocation
+
+'
 --- !u!114 &114538596166242696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,6 +732,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Propagandas: []
+--- !u!114 &114568701989831020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144236966073990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: '<b>Defeat the tyranny!</b>
+
+    It''s very bad, you know...'
 --- !u!114 &114599406234250826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,6 +762,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proportionalToSupport: 0
   _soldiersPerSecond: 1
+--- !u!114 &114629347333524234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033917564556324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 0
+  _attackForce: 2
+  _defenseForce: 0.5
+--- !u!114 &114681452787311610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247993875363724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: Encouragement
+--- !u!114 &114697816920996676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522009740142544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 0
+  _attackForce: 0.5
+  _defenseForce: 2
 --- !u!114 &114721705799209324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,6 +841,24 @@ MonoBehaviour:
   Description: 'What is Conscription, again?
 
     Oh, yeah, army. Whatever...'
+--- !u!114 &114727417760161436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449022031612594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: 'Demoralisation
+
+
+'
 --- !u!114 &114777909712291716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,6 +893,19 @@ MonoBehaviour:
     <i>Stand up for your rights!</i>
 
 '
+--- !u!114 &114851468784028910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247993875363724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42661ab5781821c40b899fd1b6329e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 1
+  _selfEsteem: 2.5
 --- !u!114 &114898212491936224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,10 +924,73 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033917564556324}
+  m_GameObject: {fileID: 1144236966073990}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9471bc8109c1d5f48920c21d52cef746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _probabilityFactor: 0.1
+--- !u!114 &114930536584542160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522009740142544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: 'Doubt
+
+
+'
+--- !u!114 &114941265805803492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666851291295066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42661ab5781821c40b899fd1b6329e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 0
+  _selfEsteem: 3
+--- !u!114 &114962604936965150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922135282330934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: '<i>Defeat the tyranny!</i>
+
+    Appeals to rebel civilians to kill soldiers in loyalist cities.'
+--- !u!114 &114989581305614786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671433503313908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
+  Name: Call to rebellion
+  Duration: 10
+  Description: Deserteurs
