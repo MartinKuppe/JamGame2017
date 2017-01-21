@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: FXPROP_Conscription
   m_EditorClassIdentifier: 
   Id: Conscription
-  ParticlePrefab: {fileID: 1017371789082794, guid: 6fc0b8df2bec5c742a6f3a8bfb6fe747,
+  ParticlePrefab: {fileID: 1583761312551838, guid: ede3f1d9707e7524d8e0103276a6b89a,
     type: 2}
   MaxInstance: 1

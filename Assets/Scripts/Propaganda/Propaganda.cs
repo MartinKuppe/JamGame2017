@@ -7,15 +7,42 @@ public class Propaganda : MonoBehaviour
     public Sprite Poster;
     public string Name;
     public float Duration = 10;
+    public float CooldownDuration = 1;
 
     [TextArea]
     public string Description;
 
     private ParticleControls _controls;
-    private bool _active = false;
     private float _time = 0;
 
+    private State _state = State.Idle;
+    public enum State
+    {
+        Idle, 
+        Using,
+        Cooldown
+    }
+
     private IPropagandaEffect[] _effects;
+
+    public float Overlay
+    {
+        get
+        {
+            switch (_state)
+            {
+                case State.Using:
+                    return Mathf.Clamp01(_time / Duration);
+                case State.Cooldown:
+                    return 1.0f - Mathf.Clamp01(_time / CooldownDuration);
+                case State.Idle:
+                default:
+                    return 0;
+            }
+        }
+    }
+
+    public bool Usable { get { return _state == State.Idle; } }
 
     void Awake()
     {
@@ -24,31 +51,54 @@ public class Propaganda : MonoBehaviour
 
     void Update()
     {
-        if(_active)
+        var location = PropagandaEmitter.GetLocation();
+        _controls.MoveTo(location);
+        
+        switch (_state)
         {
-            _time += Time.deltaTime;
+            case State.Using:
+                _time += Time.deltaTime;
 
-            Trigger(PropagandaEmitter.GetLocation());
+                Trigger(location);
 
-            if (_time > Duration)
-                _active = false;
+                if (_time > Duration)
+                {
+                    _controls.Stop();
+                    _time = 0;
+                    _state = State.Cooldown;
+                    PropagandaDescription.SetOngoingPropaganda(false);
+                }
+                break;
+            case State.Cooldown:
+                _time += Time.deltaTime;
+
+                if (_time > CooldownDuration)
+                {
+                    _state = State.Idle;
+                }
+                break;
+            case State.Idle:
+            default:
+                break;
         }
     }
 
     public void Trigger()
     {
-        _active = true;
-        _time = 0;
+        if(_state == State.Idle)
+        {
+            PropagandaDescription.SetOngoingPropaganda(true);
+            _state = State.Using;
+            _time = 0;
 
-        _controls = Particles.ControlledPlay(name);
+            _controls = Particles.ControlledPlay(name);
 
-        Trigger(PropagandaEmitter.GetLocation());
+            Trigger(PropagandaEmitter.GetLocation());
+        }
     }
 
     private void Trigger(Vector3 location)
     {
-        _controls.MoveTo(location);
-
         for (int i = 0; i < _effects.Length; i++)
         {
             _effects[i].OnPropaganda(location, PropagandaEmitter.GetNearCities());

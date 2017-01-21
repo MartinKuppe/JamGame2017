@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: FXPROP_Agitation
   m_EditorClassIdentifier: 
   Id: Agitation
-  ParticlePrefab: {fileID: 1017371789082794, guid: 6fc0b8df2bec5c742a6f3a8bfb6fe747,
+  ParticlePrefab: {fileID: 1583761312551838, guid: dd13b1b073e70ca4885e386f09805482,
     type: 2}
   MaxInstance: 1
