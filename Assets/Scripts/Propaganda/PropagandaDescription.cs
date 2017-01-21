@@ -46,6 +46,15 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     }
 	
 	void Update () {
+
+        if(Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            if (_state == State.Inside)
+            {
+                PropagandaDescription.SetPropaganda(null);
+            }
+        }
+
 		if(_state == State.Entering)
         {
             _time += Time.deltaTime;
@@ -149,6 +158,7 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     {
         if (Instance != null)
             Instance.UpdatePropaganda(propaganda);
+        else PropagandaButtonsPanel.Instance.RefocusControl();
     }
     public void Trigger()
     {
