@@ -66,6 +66,9 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     void Start()
     {
+        // Register city to PropagandaEmitter (the player) --
+        PropagandaEmitter.RegisterCity(transform.position);
+
         // Not optimal
         Waypoint[] allWaypoints = FindObjectsOfType<Waypoint>();
         float minDistance = Mathf.Infinity;
