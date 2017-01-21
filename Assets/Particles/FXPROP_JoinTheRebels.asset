@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad37f99bede0fd4b9fba9431e682072, type: 3}
+  m_Name: FXPROP_JoinTheRebels
+  m_EditorClassIdentifier: 
+  Id: JoinTheRebels
+  ParticlePrefab: {fileID: 1017371789082794, guid: 6fc0b8df2bec5c742a6f3a8bfb6fe747,
+    type: 2}
+  MaxInstance: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4121961998759174}
   - component: {fileID: 114145297210737858}
   m_Layer: 0
-  m_Name: Join the rebels
+  m_Name: JoinTheRebels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4257939470365864}
   - component: {fileID: 114777909712291716}
   m_Layer: 0
-  m_Name: Join the troops
+  m_Name: JoinTheTroops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
