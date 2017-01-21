@@ -11,7 +11,7 @@ public class Faction : MonoBehaviour {
         for (int i = 0; i < transform.childCount; i++)
         {
             var propaganda = transform.GetChild(i).GetComponent<Propaganda>();
-            if (propaganda != null)
+            if (propaganda != null && propaganda.gameObject.activeSelf )
                 Propagandas.Add(propaganda);
         }
 	}
