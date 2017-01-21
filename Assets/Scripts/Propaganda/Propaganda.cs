@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Propaganda : MonoBehaviour
 {
-    public Sprite Image;
+    public Sprite Poster;
     public string Name;
 
     [TextArea]
