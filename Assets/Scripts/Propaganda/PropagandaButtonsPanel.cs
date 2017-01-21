@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using SwissArmyKnife;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
 {
     public GameObject ButtonPrefab;
     public List<PropagandaButton> Buttons = new List<PropagandaButton>();
+
+    private ScrollRect _scrollRect;
+
+    private void Awake()
+    {
+        _scrollRect = GetComponent<ScrollRect>();
+    }
 
     public void CreateButtons(Faction faction)
     {
@@ -14,7 +22,7 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
         foreach (var propaganda in faction.Propagandas)
         {
             var go = Instantiate(ButtonPrefab);
-            go.transform.SetParent(transform);
+            go.transform.SetParent(_scrollRect.content, false);
             go.transform.localScale = new Vector3(1, 1, 1);
             var button = go.GetComponent<PropagandaButton>();
             button.Init(propaganda);
@@ -36,9 +44,11 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
 
     private void Reset()
     {
-        while (transform.childCount > 0)
-            Destroy(transform.GetChild(0).gameObject);
-
         Buttons.Clear();
+
+        foreach (Transform child in _scrollRect.content)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 }
