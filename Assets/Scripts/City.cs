@@ -14,11 +14,12 @@ public enum Affiliation { Loyalists = 0, Rebels = 1 };
 public class City : MonoBehaviour
 {
     [Header("Politics")]
-    public int _rebelSupport = 0;     // de 0 à 3;
     public Affiliation _occupyingFaction;
     public int _occupyingForces = 10;
     public int _attackingForces = 0;
     public Waypoint _waypoint;
+    private float _rebelSupport = 0; // De 0.0f à 1.0f
+    public int _initialRebelFlags = 0;
 
     [Header("UI")]
     public Sprite _loyalistAntSprite;
@@ -56,8 +57,8 @@ public class City : MonoBehaviour
     private int _freezeMultiplicity = 0;
     private float _troopGenerationProgress = 0.0f;
     private float _supportGenerationProgress = 0.0f;
-    private const float OPTIMAL_TROOP_GENERATION_TIME = 5.0f;
-    private const float OPTIMAL_SUPPORT_GENERATION_TIME = 5.0f;
+    private const float OPTIMAL_TROOP_PER_SECOND = 0.1f;
+    private const float OPTIMAL_SUPPORT_GENERATION_TIME = 120.0f;
 
     private float _sendPatrolCooldown = 0.0f;
 
@@ -66,6 +67,8 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     void Start()
     {
+        RebelFlags = _initialRebelFlags;
+
         // Register city to PropagandaEmitter (the player) --
         PropagandaEmitter.RegisterCity(transform.position, this);
 
@@ -108,6 +111,72 @@ public class City : MonoBehaviour
 
     }
 
+
+    public float RebelSupport
+    {
+        get
+        {
+            return _rebelSupport;
+        }
+
+        set
+        {
+            _rebelSupport = Mathf.Clamp01(value);
+        }
+    }
+
+    public float MasterSupport
+    {
+        get
+        {
+            return (_occupyingFaction == Affiliation.Rebels) ? _rebelSupport : 1.0f - _rebelSupport;
+        }
+
+        set
+        {
+            RebelSupport = (_occupyingFaction == Affiliation.Rebels) ? value : 1.0f - value;
+        }
+    }
+
+    public int RebelFlags
+    {
+        get
+        {
+            return Mathf.FloorToInt(_rebelSupport * 3.3f);
+        }
+
+        set
+        {
+            switch( value )
+            {
+                case 0:
+                    _rebelSupport = 0.0f;
+                    break;
+
+                case 1:
+                    _rebelSupport = 0.4f;
+                    break;
+
+                case 2:
+                    _rebelSupport = 0.7f;
+                    break;
+
+                case 3:
+                    _rebelSupport = 1.0f;
+                    break;
+            }
+        }
+
+    }
+
+    public bool IsRebelCity
+    {
+        get
+        {
+            return (_occupyingFaction == Affiliation.Rebels);
+        }
+    }
+
     // ---------------------------------------------------- <summary>
     // Kind of a low-frequency update function.             </summary>
     // ----------------------------------------------------
@@ -125,7 +194,7 @@ public class City : MonoBehaviour
         else
         {
             // Draft troops
-            GenerateTroops();
+            Draft( MasterSupport * OPTIMAL_TROOP_PER_SECOND * TICK_TIME);
 
             // Indoctrinate population 
             GenerateSupport();
@@ -144,6 +213,8 @@ public class City : MonoBehaviour
         return (_attackingForces > 0);
     }
 
+
+
     // ---------------------------------------------------- <summary>
     // Refresh the UI                                     </summary>
     // ----------------------------------------------------
@@ -152,7 +223,7 @@ public class City : MonoBehaviour
         // Colorize flags and faction indicator
         for (int i = 0; i < _flags.Length; i++)
         {
-            _flags[i].color = (i < _rebelSupport) ? Color.red : Color.black;
+            _flags[i].color = (i < RebelFlags) ? Color.red : Color.black;
         }
         _factionIndicator.color = (_occupyingFaction == Affiliation.Rebels) ? Color.red : Color.black;
 
@@ -515,39 +586,24 @@ public class City : MonoBehaviour
         }
     }
 
-    public float SupportNormed
-    {
-        get
-        {
-            if( _occupyingFaction == Affiliation.Loyalists )
-            {
-                return (3 - _rebelSupport) / 3.0f;
-            }
-            else
-            {
-                return _rebelSupport / 3.0f;
-            }
-        }
-    }
+
     // ---------------------------------------------------- <summary>
     // generate troops                                        </summary>
     // ----------------------------------------------------
-    public void GenerateTroops()
+    public void Draft(float soldiers )
     {
-        if(SupportNormed == 0.0f)
+        if (soldiers == 0.0f)
         {
-            _troopGenerationProgress = 0.0f;
             return;
         }
 
-        float troopGenerationPerSecond = SupportNormed / OPTIMAL_TROOP_GENERATION_TIME;
-        _troopGenerationProgress += troopGenerationPerSecond * TICK_TIME;
-        if(_troopGenerationProgress > 1.0f )
+        _troopGenerationProgress += soldiers;
+        if (_troopGenerationProgress > 1.0f)
         {
             _troopGenerationProgress -= 1.0f;
 
             int troopsOnTheirWay = (_occupyingFaction == Affiliation.Loyalists) ? _loyalistTroopsOnTheirWayHere : _rebelTroopsOnTheirWayHere;
-            _occupyingForces = Mathf.Min(_occupyingForces, MAX_TROOPS - troopsOnTheirWay);
+            _occupyingForces = Mathf.Min(_occupyingForces +1, MAX_TROOPS - troopsOnTheirWay);
             Populate();
         }
     }
@@ -557,25 +613,18 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     public void GenerateSupport()
     {
-        if (SupportNormed == 1.0f) return;
+        if (MasterSupport == 1.0f) return;
 
         float supportGenerationPerSecond = (float)_occupyingForces / (float)(MAX_TROOPS * OPTIMAL_SUPPORT_GENERATION_TIME);
-        _supportGenerationProgress += supportGenerationPerSecond * TICK_TIME;
-        if (_supportGenerationProgress > 1.0f)
+
+        int oldFlags = RebelFlags;
+        MasterSupport += supportGenerationPerSecond * TICK_TIME;
+
+        if(RebelFlags != oldFlags)
         {
-            _supportGenerationProgress -= 1.0f;
-            if (_occupyingFaction == Affiliation.Loyalists)
-            {
-                // Decrease rebel support
-                _rebelSupport = Mathf.Max(0, _rebelSupport - 1);
-            }
-            else
-            {
-                // Increase rebel support
-                _rebelSupport = Mathf.Min(3, _rebelSupport + 1);
-            }
             Populate();
         }
+
     }
 
     private const float INTERCEPT_PLAYER_DISTANCE = 0.5f;
