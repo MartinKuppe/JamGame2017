@@ -13,5 +13,7 @@ public class PropagandaManager : Singleton<PropagandaManager>
             PropagandaButtonsPanel.Instance.CreateButtons(CurrentFaction);
 
         PropagandaButtonsPanel.Instance.RefocusControl();
+
+        SoundSystem.Play("GameAtmosphere");
     }
 }

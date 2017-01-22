@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PropagandaHover : Singleton<PropagandaHover>
 {
@@ -10,6 +11,7 @@ public class PropagandaHover : Singleton<PropagandaHover>
     public float Duration = 0.2f;
     public AnimationCurve Curve;
 
+    private bool _ready = false;
     private bool _active = false;
     private float _time = 0;
     private Vector3 _lastPosition;
@@ -20,7 +22,6 @@ public class PropagandaHover : Singleton<PropagandaHover>
 
     void Start()
     {
-        Hide();
         _text = GetComponentInChildren<Text>();
     }
 
@@ -49,8 +50,26 @@ public class PropagandaHover : Singleton<PropagandaHover>
         }
 	}
 
+    internal void Init(PropagandaButton button)
+    {
+        StartCoroutine(AfterInit(button));
+    }
+
+    private IEnumerator AfterInit(PropagandaButton button)
+    {
+        yield return new WaitForSeconds(0.5f);
+        var position = button.transform.position;
+        position.x -= Distance;
+        _nextPosition = position;
+        _lastPosition = position;
+        _ready = true;
+    }
+
     public void SetHover(Propaganda propaganda, Vector3 position)
     {
+        if (!_ready)
+            return;
+        
         position.x -= Distance;
         _text.text = propaganda.Name;
         Move(position);

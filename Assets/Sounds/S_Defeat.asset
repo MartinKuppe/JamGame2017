@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30e2d630a1f84a468c12faca4823974, type: 3}
+  m_Name: S_Defeat
+  m_EditorClassIdentifier: 
+  Name: Defeat
+  AudioClip: {fileID: 8300000, guid: c0124a6835e5e1547a09d01fef4aac8a, type: 3}
+  Layer: 0
+  Loop: 0
+  Volume: 0.42
+  Pitch: 1
+  StereoPan: 0

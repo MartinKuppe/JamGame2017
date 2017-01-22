@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30e2d630a1f84a468c12faca4823974, type: 3}
+  m_Name: S_Click
+  m_EditorClassIdentifier: 
+  Name: Click
+  AudioClip: {fileID: 8300000, guid: 4aca26b8bdf8bdf4bbe4733925de8aea, type: 3}
+  Layer: 0
+  Loop: 0
+  Volume: 0.79
+  Pitch: 1
+  StereoPan: 0

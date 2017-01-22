@@ -14,4 +14,4 @@ MonoBehaviour:
   Id: Drafting
   ParticlePrefab: {fileID: 1583761312551838, guid: 8b63e27c78267d34ea08caed132c8463,
     type: 2}
-  MaxInstance: 1
+  MaxInstance: 3

@@ -94,6 +94,7 @@ public class Propaganda : MonoBehaviour
             _controls = Particles.ControlledPlay(name);
 
             Trigger(PropagandaEmitter.GetLocation());
+            SoundSystem.Play("P_" + name);
         }
     }
 

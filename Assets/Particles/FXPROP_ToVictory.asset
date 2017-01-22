@@ -14,4 +14,4 @@ MonoBehaviour:
   Id: ToVictory
   ParticlePrefab: {fileID: 1583761312551838, guid: a031984a7d3876c4ca1e1bca6a2f5e13,
     type: 2}
-  MaxInstance: 1
+  MaxInstance: 3
