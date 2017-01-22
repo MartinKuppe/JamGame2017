@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c6bd0c32b95be498b21cce1f434733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 135
+  Distance: 155
   Duration: 0.1
   Curve:
     serializedVersion: 2
