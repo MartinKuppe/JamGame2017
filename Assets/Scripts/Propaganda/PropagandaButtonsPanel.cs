@@ -2,6 +2,7 @@
 using SwissArmyKnife;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
 {
@@ -10,9 +11,20 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
 
     private ScrollRect _scrollRect;
 
+    private EventSystem _eventSystem;
+
     private void Awake()
     {
         _scrollRect = GetComponent<ScrollRect>();
+        _eventSystem = FindObjectOfType<EventSystem>();
+    }
+
+    private void Update()
+    {
+        if(_eventSystem.currentSelectedGameObject == null)
+        {
+            RefocusControl();
+        }
     }
 
     public void CreateButtons(Faction faction)

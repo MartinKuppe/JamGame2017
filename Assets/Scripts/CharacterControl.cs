@@ -4,46 +4,43 @@ using System.Collections;
 public class CharacterControl : MonoBehaviour
 {
     public float speed;
-    private Animator animator;
+    private Animator _animator;
+
+    private Transform _camTransform;
+    private Vector3 _camLocalPos;
 
     private Rigidbody2D _rigidbody;
 
-    private SpriteRenderer[] _allRenderers;
-
     private void Awake()
     {
-        _allRenderers = GetComponentsInChildren<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
-    }
+        _animator = GetComponent<Animator>();
 
-    // Use this for initialization
-    void Start()
-    {
-        animator = this.GetComponent<Animator>();
+        _camTransform = Camera.main.transform;
+        _camTransform.SetParent(transform.parent, false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        _camTransform.position = new Vector3(transform.position.x, transform.position.y, _camTransform.position.z);
+
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputVertical = Input.GetAxis("Vertical");
 
         Vector3 newVelocity = new Vector3(inputHorizontal * speed, inputVertical * speed, 0.0f);
         _rigidbody.velocity = newVelocity;
 
-        if(inputHorizontal > 0)
+        float animVal = Mathf.Max(Mathf.Abs(inputHorizontal), Mathf.Abs(inputVertical));
+        _animator.SetFloat("Velocity", animVal);
+
+        if(inputHorizontal < 0)
         {
-            foreach(SpriteRenderer r in _allRenderers)
-            {
-                r.flipX = true;
-            }
+            transform.localEulerAngles = new Vector3(0, 0, 0);
         }
-        else if (inputHorizontal < 0)
+        else if (inputHorizontal > 0)
         {
-            foreach (SpriteRenderer r in _allRenderers)
-            {
-                r.flipX = false;
-            }
+            transform.localEulerAngles = new Vector3(0, 180, 0);
         }
     }
 }
