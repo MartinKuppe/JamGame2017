@@ -30,7 +30,7 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
     public void CreateButtons(Faction faction)
     {
         Reset();
-
+        
         foreach (var propaganda in faction.Propagandas)
         {
             var go = Instantiate(ButtonPrefab);
@@ -40,6 +40,8 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
             button.Init(propaganda);
             Buttons.Add(button);
         }
+        
+        PropagandaHover.Instance.Init(Buttons[0]);
 
         RefocusControl();
 
