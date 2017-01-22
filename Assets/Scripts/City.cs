@@ -61,13 +61,17 @@ public class City : MonoBehaviour
     private int _freezeMultiplicity = 0;
     private float _troopGenerationProgress = 0.0f;
     private float _supportGenerationProgress = 0.0f;
-    private const float OPTIMAL_TROOP_PER_SECOND = 0.1f;
-    private const float OPTIMAL_SUPPORT_GENERATION_TIME = 120.0f;
+    private const float OPTIMAL_TROOP_PER_SECOND_REBELS = 0.2f;
+    private const float OPTIMAL_TROOP_PER_SECOND_LOYALISTS = 0.03f;
+    private const float OPTIMAL_SUPPORT_GENERATION_TIME_REBELS= 100.0f;
+    private const float OPTIMAL_SUPPORT_GENERATION_TIME_LOYALISTS = 200.0f;
 
     private float _sendPatrolCooldown = 0.0f;
     public float SelfEsteem { get; set; }
     public float ForceOfDefenders { get; set; }
     public float ForceOfAttackers { get; set; }
+
+    public GameObject _minimapCombatMarker;
 
     // ---------------------------------------------------- <summary>
     // The start function.
@@ -99,6 +103,8 @@ public class City : MonoBehaviour
         SelfEsteem = 1.0f;
         ForceOfDefenders = 1.0f;
         ForceOfAttackers = 1.0f;
+
+        _minimapCombatMarker.SetActive(false);
     }
 
     // ---------------------------------------------------- <summary>
@@ -205,13 +211,25 @@ public class City : MonoBehaviour
         // Are we at war ?
         if (IsUnderAttack())
         {
+            _minimapCombatMarker.SetActive(true);
+
             // handle combat
             UpdateAttack();
         }
         else
         {
+            _minimapCombatMarker.SetActive(false);
+
             // Draft troops
-            Draft( MasterSupport * OPTIMAL_TROOP_PER_SECOND * TICK_TIME);
+            if ( IsRebelCity )
+            {
+                Draft(MasterSupport * OPTIMAL_TROOP_PER_SECOND_REBELS * TICK_TIME);
+            }
+            else
+            {
+                Draft(MasterSupport * OPTIMAL_TROOP_PER_SECOND_LOYALISTS * TICK_TIME);
+            }
+
 
             // Indoctrinate population 
             GenerateSupport();
@@ -736,7 +754,16 @@ public class City : MonoBehaviour
     {
         if (MasterSupport == 1.0f) return;
 
-        float supportGenerationPerSecond = (float)_occupyingForces / (float)(MAX_TROOPS * OPTIMAL_SUPPORT_GENERATION_TIME);
+        float supportGenerationPerSecond;
+        if ( IsRebelCity )
+        {
+            supportGenerationPerSecond = (float)_occupyingForces / (float)(MAX_TROOPS * OPTIMAL_SUPPORT_GENERATION_TIME_REBELS);
+        }
+        else
+        {
+            supportGenerationPerSecond = (float)_occupyingForces / (float)(MAX_TROOPS * OPTIMAL_SUPPORT_GENERATION_TIME_LOYALISTS);
+        }
+
 
         int oldFlags = RebelFlags;
         MasterSupport += supportGenerationPerSecond * TICK_TIME;

@@ -14,6 +14,7 @@ using SwissArmyKnife;
 public class SoldierGroup : MonoBehaviour 
 {
     public SpriteRenderer[] _spriteRenderers;
+    public SpriteRenderer[] _minimapSpriteRenderers;
     public Sprite _loyalistAntSprite;
     public Sprite _rebelAntSprite;
     private Affiliation _affiliation;
@@ -32,10 +33,12 @@ public class SoldierGroup : MonoBehaviour
         _freezeAI = freezeAI;
 
         // Display
+        Sprite sprite = (_affiliation == Affiliation.Loyalists) ? _loyalistAntSprite : _rebelAntSprite;
         for ( int i = 0; i < _spriteRenderers.Length; i++ )
         {
-            _spriteRenderers[i].enabled = (i < _size);
-            _spriteRenderers[i].sprite = (_affiliation == Affiliation.Loyalists) ? _loyalistAntSprite : _rebelAntSprite;
+            _spriteRenderers[i].gameObject.SetActive(i < _size);
+            _spriteRenderers[i].sprite = sprite;
+            _minimapSpriteRenderers[i].sprite = sprite;
         }
 
         // Position on path
