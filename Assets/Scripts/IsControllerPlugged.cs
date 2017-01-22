@@ -28,14 +28,14 @@ public class IsControllerPlugged : MonoBehaviour
         if( Input.GetJoystickNames().Length > 0)
         {
             // Controller is plugged
-            _displayWhenControllerPlugged.SetActive(true);
-            _displayWhenNoControllerPlugged.SetActive(false);
+            if (_displayWhenControllerPlugged != null) _displayWhenControllerPlugged.SetActive(true);
+            if (_displayWhenNoControllerPlugged != null) _displayWhenNoControllerPlugged.SetActive(false);
         }
         else
         {
             // No controller is plugged
-            _displayWhenControllerPlugged.SetActive(false);
-            _displayWhenNoControllerPlugged.SetActive(true);
+            if (_displayWhenControllerPlugged != null) _displayWhenControllerPlugged.SetActive(false);
+            if (_displayWhenNoControllerPlugged != null) _displayWhenNoControllerPlugged.SetActive(true);
         }
     }
 
