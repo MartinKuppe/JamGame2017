@@ -20,6 +20,8 @@ public class LoadLevelButton : MonoBehaviour
 	///-------------------------------------------------------
 	public void OnClicked() 
 	{
+        SoundSystem.Play("Click");
+
         switch(_whichLevel)
         {
             case WhichLevel.Next:

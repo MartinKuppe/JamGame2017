@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using SwissArmyKnife;
 using System.Collections.Generic;
 using System;
 
 public enum Layer { UI, Atmosphere, SoundEffects }
 
-public class SoundSystem : Singleton<SoundSystem> {
+public class SoundSystem : SingletonPersistent<SoundSystem> {
 
     public SoundSettings Settings;
     public int PoolSize = 10;
