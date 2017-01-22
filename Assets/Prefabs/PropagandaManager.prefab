@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proportionalToSupport: 0
-  _soldiersPerSecond: 1
+  _soldiersPerSecond: 2
 --- !u!114 &114681452787311610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,9 +514,9 @@ MonoBehaviour:
   Name: Agitprop
   Duration: 10
   CooldownDuration: 30
-  Description: "Increases support in government-controlled cities. Might even motivate
-    soldiers to defect. \nNot everyone in your cities agrees with theses agressive
-    methods, though.\n\n<i>Stand up for your rights!</i>\n"
+  Description: "Increases support and defection in government-controlled cities. \nNot
+    everyone in your cities agrees with theses agressive methods, though.\n\r\n<i>Stand
+    up for your rights!</i>"
 --- !u!114 &114851468784028910
 MonoBehaviour:
   m_ObjectHideFlags: 1
