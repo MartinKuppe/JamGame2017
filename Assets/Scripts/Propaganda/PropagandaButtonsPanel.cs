@@ -60,7 +60,7 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
 
     public void RefocusControl()
     {
-        if (Buttons.Count > 0) {
+        if (Buttons.Count > 0 && Input.GetJoystickNames().Length > 0) {
             Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(Buttons[0].Button.gameObject);
             Buttons[0].Hover();
         }
