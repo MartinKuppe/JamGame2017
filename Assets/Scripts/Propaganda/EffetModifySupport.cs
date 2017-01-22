@@ -17,9 +17,13 @@ public class EffetModifySupport : MonoBehaviour, IPropagandaEffect
     {
         foreach (City city in targets)
         {
-            if ((city.IsRebelCity && _inRebelCities) || (!city.IsRebelCity && _inLoyalistCities))
+            if (city.IsRebelCity && _inRebelCities)
             {
                 city.RebelSupport += _supportPerSecond * Time.deltaTime;
+            }
+            else if (!city.IsRebelCity && _inLoyalistCities)
+            {
+                city.RebelSupport += _supportPerSecond * Time.deltaTime * city._conversionFactor;
             }
         }
 

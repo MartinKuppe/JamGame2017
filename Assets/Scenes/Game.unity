@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872692, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1804,6 +1804,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 295
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
@@ -5470,6 +5480,16 @@ Prefab:
       propertyPath: _minimapCombatMarker
       value: 
       objectReference: {fileID: 1803128402}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
   m_IsPrefabParent: 0
@@ -9237,6 +9257,11 @@ Prefab:
         type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
@@ -15778,6 +15803,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
   m_IsPrefabParent: 0
@@ -17570,6 +17605,11 @@ Prefab:
         type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
@@ -21896,6 +21936,16 @@ Prefab:
       propertyPath: _minimapCombatMarker
       value: 
       objectReference: {fileID: 984692254}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
   m_IsPrefabParent: 0
@@ -24030,6 +24080,16 @@ Prefab:
       propertyPath: _minimapCombatMarker
       value: 
       objectReference: {fileID: 11388055}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
   m_IsPrefabParent: 0
@@ -26660,6 +26720,16 @@ Prefab:
       propertyPath: _minimapCombatMarker
       value: 
       objectReference: {fileID: 1477417533}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
   m_IsPrefabParent: 0
@@ -28481,6 +28551,16 @@ Prefab:
       propertyPath: _minimapCombatMarker
       value: 
       objectReference: {fileID: 1325295905}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _conversionFactor
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832443206101154, guid: 3d9bfe2c9634b5b419428f434eb2c5b0,
+        type: 2}
+      propertyPath: _frontlineAdditionalProduction
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9bfe2c9634b5b419428f434eb2c5b0, type: 2}
   m_IsPrefabParent: 0

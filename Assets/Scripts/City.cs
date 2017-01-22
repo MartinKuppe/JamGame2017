@@ -71,6 +71,10 @@ public class City : MonoBehaviour
     public float ForceOfDefenders { get; set; }
     public float ForceOfAttackers { get; set; }
 
+    // For hardcore cities
+    public float _frontlineAdditionalProduction = 0.0f;
+    public float _conversionFactor = 1.0f;
+
     public GameObject _minimapCombatMarker;
 
     // ---------------------------------------------------- <summary>
@@ -225,11 +229,14 @@ public class City : MonoBehaviour
             {
                 Draft(MasterSupport * OPTIMAL_TROOP_PER_SECOND_REBELS * TICK_TIME);
             }
+            else if( _frontlineAdditionalProduction > 0 && IsFrontCity() )
+            {
+                Draft( (MasterSupport * OPTIMAL_TROOP_PER_SECOND_LOYALISTS + _frontlineAdditionalProduction) * TICK_TIME);
+            }
             else
             {
                 Draft(MasterSupport * OPTIMAL_TROOP_PER_SECOND_LOYALISTS * TICK_TIME);
             }
-
 
             // Indoctrinate population 
             GenerateSupport();
