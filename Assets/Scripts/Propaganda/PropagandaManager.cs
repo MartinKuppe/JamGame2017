@@ -11,5 +11,7 @@ public class PropagandaManager : Singleton<PropagandaManager>
     {
         if(CurrentFaction != null)
             PropagandaButtonsPanel.Instance.CreateButtons(CurrentFaction);
+
+        PropagandaButtonsPanel.Instance.RefocusControl();
     }
 }

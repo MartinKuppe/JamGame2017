@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using SwissArmyKnife;
 
-public class BroadcastButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BroadcastButton : Singleton<BroadcastButton>, IPointerEnterHandler, IPointerExitHandler
 {
+    [HideInInspector]
+    public Button button;
+
     private Image backgroundImage;
     private float backgroundScale = 1;
+
+    public GameObject hoverMarker;
 
     [SerializeField]
     private bool pointerIsOnButton;
@@ -20,9 +26,24 @@ public class BroadcastButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         pointerIsOnButton = false;
     }
 
+    public void OnSelect()
+    {
+        OnPointerEnter(null);
+        hoverMarker.SetActive(true);
+    }
+
+    public void OnDeselect()
+    {
+        OnPointerExit(null);
+        hoverMarker.SetActive(false);
+    }
+
     private void Awake()
     {
+        button = GetComponent<Button>();
         backgroundImage = GetComponentInChildren<Image>();
+
+        hoverMarker.SetActive(false);
     }
     
     private void Update()

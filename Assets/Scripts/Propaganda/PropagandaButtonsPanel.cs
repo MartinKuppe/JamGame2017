@@ -30,6 +30,8 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
         }
 
         RefocusControl();
+
+        Buttons[0].Hover();
     }
 
     public void DisableOthers(PropagandaButton active)
@@ -46,6 +48,7 @@ public class PropagandaButtonsPanel : Singleton<PropagandaButtonsPanel>
     {
         if (Buttons.Count > 0) {
             Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(Buttons[0].Button.gameObject);
+            Buttons[0].Hover();
         }
     }
 

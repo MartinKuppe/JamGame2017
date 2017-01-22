@@ -16,6 +16,8 @@ public class PropagandaHover : Singleton<PropagandaHover>
     private Vector3 _nextPosition;
     private Text _text;
 
+    private Propaganda _hoveredPropaganda = null;
+
     void Start()
     {
         Hide();
@@ -35,6 +37,16 @@ public class PropagandaHover : Singleton<PropagandaHover>
                 _active = false;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Joystick1Button2) && _hoveredPropaganda != null)
+        {
+            bool launchable = !PropagandaDescription.Instance._ongoingPropaganda && _hoveredPropaganda.Usable;
+            if(launchable)
+            {
+                _hoveredPropaganda.Trigger();
+                PropagandaDescription.SetPropaganda(null);
+            }            
+        }
 	}
 
     public void SetHover(Propaganda propaganda, Vector3 position)
@@ -42,10 +54,13 @@ public class PropagandaHover : Singleton<PropagandaHover>
         position.x -= Distance;
         _text.text = propaganda.Name;
         Move(position);
+        _hoveredPropaganda = propaganda;
     }
 
     public void Hide()
     {
+        _hoveredPropaganda = null;
+
         var position = transform.position;
         position.x += 2 * Distance;
         Move(position);
