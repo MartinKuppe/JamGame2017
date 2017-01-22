@@ -173,6 +173,8 @@ GameObject:
   - component: {fileID: 224269814539436538}
   - component: {fileID: 222506788469133974}
   - component: {fileID: 114724703381983020}
+  - component: {fileID: 114307089322994786}
+  - component: {fileID: 114326824112236220}
   m_Layer: 0
   m_Name: Colorbase
   m_TagString: Untagged
@@ -1382,6 +1384,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114307089322994786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257245344307252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 8, y: -8}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114312822155570618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1463,6 +1479,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114326824112236220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257245344307252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3859448890c83ae46ae44004ae350596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseAllyColor: {r: 1, g: 0, b: 0, a: 0.922}
+  BaseEnnemyColor: {r: 0.30147058, g: 0.2815203, b: 0.2815203, a: 1}
+  OutlineAllyColor: {r: 0, g: 0, b: 0, a: 1}
+  OutlineEnnemyColor: {r: 0.78676474, g: 0, b: 0, a: 1}
 --- !u!114 &114330546708354148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2335,7 +2366,7 @@ MonoBehaviour:
   - {fileID: 114737228892762998}
   - {fileID: 114976768330928314}
   - {fileID: 114920729589616580}
-  _factionIndicator: {fileID: 114724703381983020}
+  _factionIndicator: {fileID: 0}
   _neighbourCities: []
   _soldierGroupPrefab: {fileID: 114513201950704518, guid: 91c5aa515d9121d479b057f61db8d265,
     type: 2}
@@ -3121,7 +3152,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820229885327500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224269814539436538}
@@ -3598,7 +3629,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1562094805559278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224218223486588736}

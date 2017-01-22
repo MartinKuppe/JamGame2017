@@ -30,7 +30,7 @@ public class City : MonoBehaviour
     public Image[] _flags;
     public Image[] _occupyingForcesImages;
     public Image[] _attackingForcesImages;
-    public Image _factionIndicator;
+    public ColorBase _factionIndicator;
 
     private const float TICK_TIME = 0.5f;
     private float _tickTimer = 0.0f;
@@ -74,6 +74,8 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     void Start()
     {
+        _factionIndicator = GetComponentInChildren<ColorBase>();
+
         RebelFlags = _initialRebelFlags;
 
         // Register city to PropagandaEmitter (the player) --
@@ -240,7 +242,7 @@ public class City : MonoBehaviour
         {
             _flags[i].color = (i < RebelFlags) ? Color.red : Color.black;
         }
-        _factionIndicator.color = (_occupyingFaction == Affiliation.Rebels) ? Color.red : Color.black;
+        _factionIndicator.Ally = _occupyingFaction == Affiliation.Rebels;
 
         // Update occupying troops
         Sprite spriteUs = (_occupyingFaction == Affiliation.Loyalists) ? _loyalistAntSprite : _rebelAntSprite;

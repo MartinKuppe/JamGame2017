@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: ca6a44e85f345204986fe72f0f7b18eb, type: 3}
-  Name: Demoralize
+  Name: DEMORALIZE
   Duration: 10
   CooldownDuration: 30
   Description: 'Frighten the loyalists such that they don''t attack
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 4dcef2d5d83950c4cabd360424176911, type: 3}
-  Name: Provocation
+  Name: PROVOCATION
   Duration: 10
   CooldownDuration: 30
   Description: 'Insult the ant queen to provoke loyalist attacks.
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 1760f9ae7fb85b643bc9827d7ffa9fd3, type: 3}
-  Name: Turn city
+  Name: TURN CITY
   Duration: 10
   CooldownDuration: 30
   Description: Incite a loyalist-controlled city with three red flags to join our
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 5def02755d732984297a195a9c345637, type: 3}
-  Name: To victory
+  Name: TO VICTORY
   Duration: 10
   CooldownDuration: 30
   Description: Motivates rebel city to attack, increases offensive force.
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 66f5754d9b77348439aea2fdf390efed, type: 3}
-  Name: Indoctrination
+  Name: INDOCTRINATION
   Duration: 10
   CooldownDuration: 30
   Description: 'Increases support in rebel-controlled cities.
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 5def02755d732984297a195a9c345637, type: 3}
-  Name: Entrench
+  Name: ENTRENCH
   Duration: 10
   CooldownDuration: 30
   Description: 'Rebel armies won''t attack, increases defensive power.
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 494ee1e203b24724cabb7da536e6cf8c, type: 3}
-  Name: Join the troops
+  Name: JOIN THE TROOPS
   Duration: 10
   CooldownDuration: 30
   Description: Recruits volunteers in rebel-controlled cities.
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 542a2d32c84c9974fa3c8284029fecc3, type: 3}
-  Name: Agitation
+  Name: AGITATION
   Duration: 10
   CooldownDuration: 30
   Description: 'Increases support in government-controlled cities.
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 3789d08e9ae6d834da41273c7302f159, type: 3}
-  Name: Resistance
+  Name: RESISTANCE
   Duration: 10
   CooldownDuration: 30
   Description: '<i>Defeat the tyranny!</i>
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 47ebe76729bc86e40b7c437f427b3697, type: 3}
-  Name: Deserters
+  Name: DESERTERS
   Duration: 10
   CooldownDuration: 30
   Description: Encourage black ants in front cities to desert and join the rebellion.
