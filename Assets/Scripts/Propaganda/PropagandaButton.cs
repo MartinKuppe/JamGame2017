@@ -53,6 +53,8 @@ public class PropagandaButton : MonoBehaviour {
         active = !active;
         PropagandaDescription.SetPropaganda(active ? _propaganda : null);
 
+        SoundSystem.Play("SelectPropaganda");
+
         PropagandaHover.Instance.Hide();
     }
 
