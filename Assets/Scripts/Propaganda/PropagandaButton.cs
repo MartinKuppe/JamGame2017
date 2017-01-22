@@ -46,6 +46,11 @@ public class PropagandaButton : MonoBehaviour {
         PropagandaHover.Instance.SetHover(_propaganda, transform.position);
     }
 
+    public void OnPointerExit()
+    {
+        PropagandaHover.Instance.Hide();
+    }
+
     public void Display()
     {
         PropagandaButtonsPanel.Instance.DisableOthers(this);
