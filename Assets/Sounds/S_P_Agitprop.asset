@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30e2d630a1f84a468c12faca4823974, type: 3}
   m_Name: S_P_Agitprop
   m_EditorClassIdentifier: 
-  Name: P_Agitprop
+  Name: S_Agitprop
   AudioClip: {fileID: 8300000, guid: f9e03a7cb84ebd1499c9a16ec1cc6a9d, type: 3}
   Layer: 2
   Loop: 0
-  Volume: 1
+  Volume: 0.8
   Pitch: 1
   StereoPan: 0

@@ -12,7 +12,8 @@ public class SoundInstance : MonoBehaviour {
     public enum State
     {
         Idle,
-        Playing
+        Playing,
+        Paused
     }
 
     private AudioSource _source;
@@ -31,7 +32,7 @@ public class SoundInstance : MonoBehaviour {
             ConstraintAudioSource();
 
             // Check if the source is still playing --
-            if (!_source.isPlaying)
+            if (!_source.isPlaying && CurrentState != State.Paused)
             {
                 Free();
             }
@@ -45,7 +46,7 @@ public class SoundInstance : MonoBehaviour {
 
     public bool IsPlaying()
     {
-        return CurrentState == State.Playing;
+        return CurrentState == State.Playing || CurrentState == State.Paused;
     }
 
     public uint Play(VolumeNodeInstance layer, Sound sound)
@@ -94,5 +95,17 @@ public class SoundInstance : MonoBehaviour {
         _source.volume = Volume.GetVolume();
         _source.pitch = Sound.Pitch;
         _source.panStereo = Sound.StereoPan;
+    }
+
+    internal void Pause()
+    {
+        Debug.Log("Pause");
+        Volume.IsMute = true;
+    }
+
+    internal void Resume()
+    {
+        Debug.Log("Resume");
+        Volume.IsMute = false;
     }
 }

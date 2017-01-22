@@ -163,6 +163,27 @@ public class SoundSystem : Singleton<SoundSystem> {
         }
     }
 
+
+    private void InternalPause(uint instanceId)
+    {
+        for (int i = 0; i < _pool.Count; i++)
+        {
+            var slot = _pool[i];
+            if (slot.Id == instanceId)
+                slot.Pause();
+        }
+    }
+
+    private void InternalResume(uint instanceId)
+    {
+        for (int i = 0; i < _pool.Count; i++)
+        {
+            var slot = _pool[i];
+            if (slot.Id == instanceId)
+                slot.Resume();
+        }
+    }
+
     private void StopAllInLayer(Layer layer)
     {
         for (int i = 0; i < _pool.Count; i++)
@@ -221,6 +242,24 @@ public class SoundSystem : Singleton<SoundSystem> {
             return;
 
         Instance.InternalStop(instanceId);
+    }
+
+    static public void Pause(uint instanceId)
+    {
+        // Invalid instanceId
+        if (instanceId == 0 || Instance == null)
+            return;
+
+        Instance.InternalPause(instanceId);
+    }
+
+    static public void Resume(uint instanceId)
+    {
+        // Invalid instanceId
+        if (instanceId == 0 || Instance == null)
+            return;
+
+        Instance.InternalResume(instanceId);
     }
 
     static public void ClearLayer(Layer layer)

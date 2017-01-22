@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class Propaganda : MonoBehaviour
     public string Name;
     public float Duration = 10;
     public float CooldownDuration = 1;
+
+    public static uint SoundEffect = 0;
 
     [TextArea]
     public string Description;
@@ -47,6 +50,23 @@ public class Propaganda : MonoBehaviour
     void Awake()
     {
         _effects = GetComponents<IPropagandaEffect>();
+        SoundEffect = 0;
+    }
+
+    void Start()
+    {
+        StartCoroutine(DelaySoundInit());
+    }
+
+    private IEnumerator DelaySoundInit()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (SoundEffect == 0)
+        {
+            SoundEffect = SoundSystem.Play("Propaganda");
+            SoundSystem.Pause(SoundEffect);
+        }
     }
 
     void Update()
@@ -67,6 +87,7 @@ public class Propaganda : MonoBehaviour
                     _time = 0;
                     _state = State.Cooldown;
                     PropagandaDescription.SetOngoingPropaganda(false);
+                    SoundSystem.Pause(SoundEffect);
                 }
                 break;
             case State.Cooldown:
@@ -88,6 +109,7 @@ public class Propaganda : MonoBehaviour
         if(_state == State.Idle)
         {
             PropagandaDescription.SetOngoingPropaganda(true);
+            SoundSystem.Resume(SoundEffect);
             _state = State.Using;
             _time = 0;
 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30e2d630a1f84a468c12faca4823974, type: 3}
+  m_Name: S_Propaganda
+  m_EditorClassIdentifier: 
+  Name: Propaganda
+  AudioClip: {fileID: 8300000, guid: 7760f060a72e1834eae2299886d93547, type: 3}
+  Layer: 2
+  Loop: 1
+  Volume: 1
+  Pitch: 1
+  StereoPan: 0
