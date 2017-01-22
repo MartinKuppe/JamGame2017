@@ -11,40 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1728018640872088}
   m_IsPrefabParent: 1
---- !u!1 &1032860616478854
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4978852869873042}
-  - component: {fileID: 114007955376477504}
-  - component: {fileID: 114322173244573690}
-  m_Layer: 0
-  m_Name: Offensive
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1033917564556324
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4121961998759174}
-  - component: {fileID: 114145297210737858}
-  - component: {fileID: 114629347333524234}
-  m_Layer: 0
-  m_Name: Intimidation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1135652100047392
 GameObject:
   m_ObjectHideFlags: 1
@@ -73,7 +39,7 @@ GameObject:
   - component: {fileID: 114568701989831020}
   - component: {fileID: 114923453206329240}
   m_Layer: 0
-  m_Name: JoinTheRebels
+  m_Name: TurnCity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +72,9 @@ GameObject:
   - component: {fileID: 4935842635692674}
   - component: {fileID: 114681452787311610}
   - component: {fileID: 114851468784028910}
+  - component: {fileID: 114676155965738858}
   m_Layer: 0
-  m_Name: Encouragement
+  m_Name: ToVictory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,8 +90,9 @@ GameObject:
   - component: {fileID: 4484009190349932}
   - component: {fileID: 114727417760161436}
   - component: {fileID: 114313133051318844}
+  - component: {fileID: 114969522529795412}
   m_Layer: 0
-  m_Name: Prudence
+  m_Name: Entrench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,23 +109,6 @@ GameObject:
   - component: {fileID: 114538596166242696}
   m_Layer: 0
   m_Name: Faction A
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1522009740142544
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4370299614271946}
-  - component: {fileID: 114930536584542160}
-  - component: {fileID: 114697816920996676}
-  m_Layer: 0
-  m_Name: Semer le doute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +208,7 @@ GameObject:
   - component: {fileID: 114599406234250826}
   - component: {fileID: 114135832103200960}
   m_Layer: 0
-  m_Name: Conscription
+  m_Name: Draft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +225,7 @@ GameObject:
   - component: {fileID: 114962604936965150}
   - component: {fileID: 114064105252558762}
   m_Layer: 0
-  m_Name: Sabotage
+  m_Name: Resistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,19 +260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4488407481191998}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4121961998759174
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033917564556324}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4198895825338484
 Transform:
@@ -375,7 +313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4358143447452750
 Transform:
@@ -389,19 +327,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4314799673552050}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4370299614271946
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522009740142544}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4408816446858446
 Transform:
@@ -427,7 +352,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4488407481191998
 Transform:
@@ -447,12 +372,9 @@ Transform:
   - {fileID: 4648296980411506}
   - {fileID: 4198895825338484}
   - {fileID: 4935842635692674}
-  - {fileID: 4978852869873042}
   - {fileID: 4357922589082354}
   - {fileID: 4654604206446676}
   - {fileID: 4484009190349932}
-  - {fileID: 4370299614271946}
-  - {fileID: 4121961998759174}
   m_Father: {fileID: 4314799673552050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,7 +402,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4753139015855554
 Transform:
@@ -521,34 +443,6 @@ Transform:
   m_Father: {fileID: 4488407481191998}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4978852869873042
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032860616478854}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4488407481191998}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114007955376477504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032860616478854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
-  Duration: 10
-  Description: Offensive
 --- !u!114 &114064105252558762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,24 +481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _idealDesertsPerSecond: 1
---- !u!114 &114145297210737858
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033917564556324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
-  Duration: 10
-  Description: 'intimidation
-
-
-'
 --- !u!114 &114163213517585066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -616,10 +492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: ca6a44e85f345204986fe72f0f7b18eb, type: 3}
+  Name: DEMORALIZE
   Duration: 10
-  Description: 'Demoralisation
+  CooldownDuration: 30
+  Description: 'Frighten the loyalists such that they don''t attack
 
 
 '
@@ -676,20 +553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _affiliation: 1
   _selfEsteem: 0.5
---- !u!114 &114322173244573690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032860616478854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _affiliation: 1
-  _attackForce: 3
-  _defenseForce: 0.5
 --- !u!114 &114436676747561680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,10 +577,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: 4dcef2d5d83950c4cabd360424176911, type: 3}
+  Name: PROVOCATION
   Duration: 10
-  Description: 'Provocation
+  CooldownDuration: 30
+  Description: 'Insult the ant queen to provoke loyalist attacks.
 
 '
 --- !u!114 &114538596166242696
@@ -743,12 +607,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: 1760f9ae7fb85b643bc9827d7ffa9fd3, type: 3}
+  Name: TURN CITY
   Duration: 10
-  Description: '<b>Defeat the tyranny!</b>
-
-    It''s very bad, you know...'
+  CooldownDuration: 30
+  Description: Incite a loyalist-controlled city with three red flags to join our
+    cause.
 --- !u!114 &114599406234250826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -762,20 +626,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proportionalToSupport: 0
   _soldiersPerSecond: 1
---- !u!114 &114629347333524234
+--- !u!114 &114676155965738858
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033917564556324}
+  m_GameObject: {fileID: 1247993875363724}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _affiliation: 0
-  _attackForce: 2
-  _defenseForce: 0.5
+  _affiliation: 1
+  _attackForce: 3
+  _defenseForce: 1
 --- !u!114 &114681452787311610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -787,24 +651,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: 5def02755d732984297a195a9c345637, type: 3}
+  Name: TO VICTORY
   Duration: 10
-  Description: Encouragement
---- !u!114 &114697816920996676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522009740142544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _affiliation: 0
-  _attackForce: 0.5
-  _defenseForce: 2
+  CooldownDuration: 30
+  Description: Motivates rebel city to attack, increases offensive force.
 --- !u!114 &114721705799209324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,8 +668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 66f5754d9b77348439aea2fdf390efed, type: 3}
-  Name: Indoctrination
+  Name: INDOCTRINATION
   Duration: 10
+  CooldownDuration: 30
   Description: 'Increases support in rebel-controlled cities.
 
     <i>Ants of the hill, unite!</i>
@@ -836,11 +688,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: f1de539340e9e1e44945839796be9895, type: 3}
-  Name: Conscription
+  Name: Draft
   Duration: 10
-  Description: 'What is Conscription, again?
-
-    Oh, yeah, army. Whatever...'
+  CooldownDuration: 30
+  Description: Drafts are an unpopular but effective way to mobilize fast a lot of
+    troops.
 --- !u!114 &114727417760161436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,10 +704,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: 5def02755d732984297a195a9c345637, type: 3}
+  Name: ENTRENCH
   Duration: 10
-  Description: 'Demoralisation
+  CooldownDuration: 30
+  Description: 'Rebel armies won''t attack, increases defensive power.
 
 
 '
@@ -871,9 +724,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 494ee1e203b24724cabb7da536e6cf8c, type: 3}
-  Name: Join the troops
+  Name: JOIN THE TROOPS
   Duration: 10
-  Description: My army needs you!
+  CooldownDuration: 30
+  Description: Recruits volunteers in rebel-controlled cities.
 --- !u!114 &114802330677538790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -886,8 +740,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 542a2d32c84c9974fa3c8284029fecc3, type: 3}
-  Name: Agitation
+  Name: AGITATION
   Duration: 10
+  CooldownDuration: 30
   Description: 'Increases support in government-controlled cities.
 
     <i>Stand up for your rights!</i>
@@ -931,24 +786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _probabilityFactor: 0.1
---- !u!114 &114930536584542160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522009740142544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
-  Duration: 10
-  Description: 'Doubt
-
-
-'
 --- !u!114 &114941265805803492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -973,12 +810,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: 3789d08e9ae6d834da41273c7302f159, type: 3}
+  Name: RESISTANCE
   Duration: 10
+  CooldownDuration: 30
   Description: '<i>Defeat the tyranny!</i>
 
     Appeals to rebel civilians to kill soldiers in loyalist cities.'
+--- !u!114 &114969522529795412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449022031612594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9d87fc929216243a810ee0963b4e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affiliation: 1
+  _attackForce: 1
+  _defenseForce: 2
 --- !u!114 &114989581305614786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -990,7 +842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee59d431bd9bd4b88571dce140bdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Poster: {fileID: 21300000, guid: 47ebe76729bc86e40b7c437f427b3697, type: 3}
+  Name: DESERTERS
   Duration: 10
-  Description: Deserteurs
+  CooldownDuration: 30
+  Description: Encourage black ants in front cities to desert and join the rebellion.
