@@ -41,12 +41,19 @@ public class PropagandaButton : MonoBehaviour {
         }
     }
 
+    public void Hover()
+    {
+        PropagandaHover.Instance.SetHover(_propaganda, transform.position);
+    }
+
     public void Display()
     {
         PropagandaButtonsPanel.Instance.DisableOthers(this);
 
         active = !active;
         PropagandaDescription.SetPropaganda(active ? _propaganda : null);
+
+        PropagandaHover.Instance.Hide();
     }
 
     public void Disable()
