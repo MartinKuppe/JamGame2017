@@ -17,6 +17,8 @@ public class SoldierGroup : MonoBehaviour
     public SpriteRenderer[] _minimapSpriteRenderers;
     public Sprite _loyalistAntSprite;
     public Sprite _rebelAntSprite;
+    public Sprite _loyalistSploutchSprite;
+    public Sprite _rebelSploutchSprite;
     private Affiliation _affiliation;
     private int _size; // 1 or 2
     private List<Node> _path;
@@ -24,8 +26,12 @@ public class SoldierGroup : MonoBehaviour
     public static float SPEED = 0.25f;
     public static float SPRITE_DISTANCE = 0.2f;
     public bool? _freezeAI;
+    public SoldierGroup _groupBehindMe;
+    public SoldierGroup _groupBeforeMe;
 
-    public void Deploy( Affiliation affiliation, int size, List<Node> path , bool? freezeAI )
+    private bool _isDead = false;
+
+    public void Deploy( Affiliation affiliation, int size, List<Node> path , bool? freezeAI, SoldierGroup groupInFront = null )
     {
         _affiliation = affiliation;
         _size = size;
@@ -45,6 +51,16 @@ public class SoldierGroup : MonoBehaviour
         _nextWaypointIndex = 1;
         transform.position = path[0]._position;
         PlaceSprites();
+
+        // Register on first connection
+        path[0].RegisterSoldierGroup(path[1], this);
+
+        // Link groups
+        if(groupInFront != null)
+        {
+            _groupBeforeMe = groupInFront;
+            groupInFront._groupBehindMe = this;  // Needed to pass on lock in case of death
+        }
     }
 
     private void PlaceSprites()
@@ -66,7 +82,10 @@ public class SoldierGroup : MonoBehaviour
 
     public void Update()
     {
+        if (_isDead) return;
+
         TestIfPlayerNear();
+        HandleEnemyEncounters();
 
         if ( Move() )
         {
@@ -98,6 +117,8 @@ public class SoldierGroup : MonoBehaviour
         bool arrived = false;
         while (!arrived && fDistanceThisFrame > fDistance)
         {
+            // Unregister on last connection
+            _path[_nextWaypointIndex-1].UnregisterSoldierGroup(_path[_nextWaypointIndex], this);
 
             transform.position = vNextWaypoint;
             _nextWaypointIndex++;
@@ -113,6 +134,9 @@ public class SoldierGroup : MonoBehaviour
                 fDistanceThisFrame -= fDistance;
                 vNextWaypoint = _path[_nextWaypointIndex]._position;
                 fDistance = (vNextWaypoint - transform.position).magnitude;
+
+                // Register on next connection
+                _path[_nextWaypointIndex - 1].RegisterSoldierGroup(_path[_nextWaypointIndex], this);
             }
         }
 
@@ -131,6 +155,85 @@ public class SoldierGroup : MonoBehaviour
         if( _affiliation == Affiliation.Loyalists && (transform.position - Hero.Instance.transform.position).magnitude < ARREST_PLAYER_DISTANCE )
         {
             VictoryManager.Instance.GameOver("You were caught by an enemy patrol.");
+        }
+    }
+
+    private IEnumerator Kill()
+    {
+        // Pass on freeze to group behind ?
+        if( _freezeAI == true && _groupBehindMe != null )
+        {
+            if(_groupBehindMe._freezeAI == null)
+            {
+                // Pass on freeze
+                _groupBehindMe._freezeAI = true;
+            }
+            else
+            {
+                // Last group remainaing - eliminate unfreeze
+                _groupBehindMe._freezeAI = null;
+            }
+
+        }
+        // Unregister from path segment
+        _path[_nextWaypointIndex - 1].UnregisterSoldierGroup(_path[_nextWaypointIndex], this);
+
+        // Un-announce my arrival at target city
+        _path[_path.Count - 1]._city.OnGroupKilledOnTheirWayHere(_affiliation, _size);
+
+        // Display sploutch
+        Sprite sprite = (_affiliation == Affiliation.Loyalists) ? _loyalistSploutchSprite : _rebelSploutchSprite;
+        _spriteRenderers[0].sprite = sprite;
+        _spriteRenderers[1].sprite = sprite;
+
+        // make sure sprites are displayed below living ants
+        _spriteRenderers[0].sortingOrder = 0;
+        _spriteRenderers[1].sortingOrder = 0;
+
+        // Freeze AI
+        _isDead = true;
+
+        // fade out
+        float timer = 1.0f;
+        while (timer > 0 )
+        {
+            yield return new WaitForEndOfFrame();
+            timer -= Time.deltaTime;
+            Color alpha = new Color(1, 1, 1, timer);
+            _spriteRenderers[0].color = alpha;
+            _spriteRenderers[1].color = alpha;
+        }
+
+        // Die
+        Destroy(gameObject);
+    }
+
+
+    private void HandleEnemyEncounters()
+    {
+        // Check all groups on the same segment, in opposite direction
+        foreach( SoldierGroup enconteredGroup  in _path[_nextWaypointIndex].GroupsGoingTo(_path[_nextWaypointIndex-1]))
+        {
+            if(enconteredGroup._affiliation != _affiliation 
+                && (transform.position - enconteredGroup.transform.position).magnitude <= SPRITE_DISTANCE )
+            {
+                // Duel to the death - what are the odds?
+                float oddsToWin = (float)_size / (_size + enconteredGroup._size);
+                oddsToWin *= oddsToWin;
+
+                // Who wins?
+                if ( Random.value < oddsToWin )
+                {
+                    // We win
+                    enconteredGroup.StartCoroutine( Kill() );
+                }
+                else
+                {
+                    // They win
+                    this.StartCoroutine(Kill());
+                }
+                return;
+            }
         }
     }
 }

@@ -213,7 +213,7 @@ public class City : MonoBehaviour
         {
             _minimapCombatMarker.SetActive(true);
 
-            // handle combat
+            // Handle combat
             UpdateAttack();
         }
         else
@@ -405,6 +405,15 @@ public class City : MonoBehaviour
     // ----------------------------------------------------
     private void MakeStrategicDecisions()
     {
+        // Do I have an incoming attack ?
+        int incomingEnemyTroops = (_occupyingFaction == Affiliation.Loyalists) ? _rebelTroopsOnTheirWayHere : _loyalistTroopsOnTheirWayHere;
+
+        if(incomingEnemyTroops != 0 )
+        {
+            // Incoming attack - don't send troops out !
+            return;
+        }
+
         // How much attack forces do I have ?
         _perceivedCounterattackForces = (int)((_menacingForces - _weakestEnemyForces) / SelfEsteem);
         _indispensableAttackForces = Mathf.Max(MINIMAL_OCCUPATION_FORCE, _perceivedCounterattackForces);
@@ -430,6 +439,7 @@ public class City : MonoBehaviour
             return;
         }
     }
+
 
     // ---------------------------------------------------- <summary>
     // Send troops to a city                                  </summary>
@@ -490,6 +500,7 @@ public class City : MonoBehaviour
         FreezeAI();
 
         int remainingAmount = totalAmount;
+        SoldierGroup lastGroup = null;
         while (remainingAmount > 0 )
         {
             // Determine of next group will freeze or unfreeze the AI
@@ -506,7 +517,7 @@ public class City : MonoBehaviour
             // Deploy one or two soldiers
             int deployedNow = Mathf.Min(2, remainingAmount);
             SoldierGroup group = Instantiate<SoldierGroup>(_soldierGroupPrefab);
-            group.Deploy(_occupyingFaction, deployedNow, path, freezeAI);
+            group.Deploy(_occupyingFaction, deployedNow, path, freezeAI, lastGroup);
 
             // Update remainoing forces
             remainingAmount -= deployedNow;
@@ -514,6 +525,9 @@ public class City : MonoBehaviour
 
             // populate the UI (not done by UpdateTick because frozen)
             Populate();
+
+            // The north remembers
+            lastGroup = group;
 
             // Wait till the group is at a distance of SoldierGroup.SPRITE_DISTANCE
             yield return new WaitForSeconds( SoldierGroup.SPRITE_DISTANCE / SoldierGroup.SPEED);
@@ -623,6 +637,17 @@ public class City : MonoBehaviour
         }
     }
 
+    public void OnGroupKilledOnTheirWayHere( Affiliation affiliation, int amount )
+    {
+        if(affiliation == Affiliation.Loyalists )
+        {
+            _loyalistTroopsOnTheirWayHere -= amount;
+        }
+        else
+        {
+            _rebelTroopsOnTheirWayHere -= amount;
+        }
+    }
     /*
     // ---------------------------------------------------- <summary>
     // Draw lines to neighbour cities                     </summary>

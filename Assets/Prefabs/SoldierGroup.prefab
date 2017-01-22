@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1662334816222220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.106, z: 0}
-  m_LocalScale: {x: 0.026056863, y: 0.026056863, z: 0.026056863}
+  m_LocalScale: {x: 0.2605686, y: 0.2605686, z: 0.2605686}
   m_Children:
   - {fileID: 4602550472722782}
   m_Father: {fileID: 4775422564341774}
@@ -154,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 1592731899643800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.109, z: 0}
-  m_LocalScale: {x: 0.02605686, y: 0.02605686, z: 0.02605686}
+  m_LocalScale: {x: 0.2605686, y: 0.2605686, z: 0.2605686}
   m_Children:
   - {fileID: 4850894046732976}
   m_Father: {fileID: 4775422564341774}
@@ -179,6 +179,10 @@ MonoBehaviour:
   - {fileID: 212103995253619002}
   _loyalistAntSprite: {fileID: 21300000, guid: 9986a1880d084db4daaf15851d5189c4, type: 3}
   _rebelAntSprite: {fileID: 21300000, guid: 2bda9f4117f14aa4c82ee7996df04256, type: 3}
+  _loyalistSploutchSprite: {fileID: 21300000, guid: 36567d732119c2d45a91e34390b66e9e,
+    type: 3}
+  _rebelSploutchSprite: {fileID: 21300000, guid: 220ee65058726a942bb96c4b7c29870c,
+    type: 3}
 --- !u!212 &212103995253619002
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -244,7 +248,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9986a1880d084db4daaf15851d5189c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -279,7 +283,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9986a1880d084db4daaf15851d5189c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

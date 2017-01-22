@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using SwissArmyKnife;
 
+public class NodeConnection
+{
+    public List<SoldierGroup> _soldierGroups = new List<SoldierGroup>();
+}
+
 ///=================================================================================================================
 ///                                                                                                       <summary>
 ///  Node is a waypoint in the pathfinding graph. It has been separated from Waypoint to avoid merge conflicts.	 </summary>
@@ -20,24 +25,53 @@ public class Node
     public Node _cameFrom;
     public City _city;
 
+    private int _index;
+    private static int _nextFreeIndex = 0;
+    private Dictionary<int, NodeConnection> _nodeConnectionsByTargetIndex = new Dictionary<int, NodeConnection>();
+
     public Node( Waypoint waypoint )
     {
         _position = waypoint.transform.position;
         _waypoint = waypoint;
         _waypoint._node = this;
+        _index = _nextFreeIndex++;
+        waypoint.name = "Waypoint " + _index;
     }
 
     public void LinkTo(Node otherNode)
     {
         if (_neighbours.Contains(otherNode)) return;
+
+        // Link the nodes
         _neighbours.Add(otherNode);
         otherNode._neighbours.Add(this);
+
+        // Initialize node connections
+        NodeConnection to = new NodeConnection();
+        NodeConnection fro = new NodeConnection();
+        _nodeConnectionsByTargetIndex[otherNode._index] = to;
+        otherNode._nodeConnectionsByTargetIndex[_index] = fro;
     }
 
     public float HeuristicDistanceTo( Node otherNode)
     {
         // Manhattan metrics
         return Mathf.Abs(_position.x - otherNode._position.x) + Mathf.Abs(_position.y - otherNode._position.y);
+    }
+
+    public void RegisterSoldierGroup( Node targetNode , SoldierGroup group )
+    {
+        _nodeConnectionsByTargetIndex[targetNode._index]._soldierGroups.Add(group);
+    }
+
+    public void UnregisterSoldierGroup(Node targetNode, SoldierGroup group)
+    {
+        _nodeConnectionsByTargetIndex[targetNode._index]._soldierGroups.Remove(group);
+    }
+
+    public List<SoldierGroup> GroupsGoingTo(Node targetNode)
+    {
+        return _nodeConnectionsByTargetIndex[targetNode._index]._soldierGroups;
     }
 }
 
