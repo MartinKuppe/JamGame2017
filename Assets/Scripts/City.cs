@@ -604,6 +604,8 @@ public class City : MonoBehaviour
             Debug.Log(text);
         }
     }
+
+    /*
     // ---------------------------------------------------- <summary>
     // Draw lines to neighbour cities                     </summary>
     // ----------------------------------------------------
@@ -617,7 +619,7 @@ public class City : MonoBehaviour
             Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * neighbour.transform.position, Color.blue);
         }
     }
-
+    */
 
     // ---------------------------------------------------- <summary>
     // generate troops                                        </summary>

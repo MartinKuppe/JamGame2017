@@ -38,14 +38,16 @@ public class ColorBase : MonoBehaviour
     {
         if(_highlighted)
         {
-            _outline.enabled = true;
             _outline.effectColor = _ally ? OutlineAllyColor : OutlineEnnemyColor;
         }
-        else
-        {
-            _outline.enabled = false;
-        }
+        //Outline enabled in Update
 
         _base.color = _ally ? BaseAllyColor : BaseEnnemyColor;
+    }
+
+    private void Update()
+    {
+        // Make the outline blink when highlighted, otherwise invisible.
+        _outline.enabled = (_highlighted & (Time.time % 1.0) < 0.5f);
     }
 }

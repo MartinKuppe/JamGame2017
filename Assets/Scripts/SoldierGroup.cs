@@ -20,7 +20,7 @@ public class SoldierGroup : MonoBehaviour
     private int _size; // 1 or 2
     private List<Node> _path;
     private int _nextWaypointIndex;
-    public static float SPEED = 0.5f;
+    public static float SPEED = 0.25f;
     public static float SPRITE_DISTANCE = 0.2f;
     public bool? _freezeAI;
 

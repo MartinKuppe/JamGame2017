@@ -142,6 +142,7 @@ public class Waypoint : MonoBehaviour {
         return res;
     }
 
+    /*
     void OnDrawGizmos()
     {
         if (Application.isPlaying) return;
@@ -156,4 +157,5 @@ public class Waypoint : MonoBehaviour {
             Debug.DrawLine(transform.position, 0.5f * transform.position + 0.5f * waypoint.transform.position, Color.red);
         }
     }
+    */
 }
