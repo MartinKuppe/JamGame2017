@@ -18,7 +18,7 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     public float Duration = 0.5f;
     public AnimationCurve Curve;
 
-    private bool _ongoingPropaganda = false; 
+    public bool _ongoingPropaganda = false; 
 
     private uint _animationKey;
     private float _time;
@@ -163,7 +163,10 @@ public class PropagandaDescription : Singleton<PropagandaDescription>
     {
         if (Instance != null)
             Instance.UpdatePropaganda(propaganda);
-        else PropagandaButtonsPanel.Instance.RefocusControl();
+        else
+        {
+            PropagandaButtonsPanel.Instance.RefocusControl();
+        }
     }
     public void Trigger()
     {
