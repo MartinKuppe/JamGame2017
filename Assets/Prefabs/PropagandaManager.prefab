@@ -546,8 +546,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: Offensive
 --- !u!114 &114064105252558762
 MonoBehaviour:
@@ -599,8 +600,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: 'intimidation
 
 
@@ -617,8 +619,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: 'Demoralisation
 
 
@@ -715,8 +718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: 'Provocation
 
 '
@@ -744,9 +748,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
-  Description: '<b>Defeat the tyranny!</b>
+  CooldownDuration: 1
+  Description: '<i>Defeat the tyranny!</i>
 
     It''s very bad, you know...'
 --- !u!114 &114599406234250826
@@ -788,8 +793,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: Encouragement
 --- !u!114 &114697816920996676
 MonoBehaviour:
@@ -817,8 +823,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 66f5754d9b77348439aea2fdf390efed, type: 3}
-  Name: Indoctrination
+  Name: INDOCTRINATION
   Duration: 10
+  CooldownDuration: 1
   Description: 'Increases support in rebel-controlled cities.
 
     <i>Ants of the hill, unite!</i>
@@ -836,8 +843,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: f1de539340e9e1e44945839796be9895, type: 3}
-  Name: Conscription
+  Name: CONSCRIPTION
   Duration: 10
+  CooldownDuration: 1
   Description: 'What is Conscription, again?
 
     Oh, yeah, army. Whatever...'
@@ -853,8 +861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: 'Demoralisation
 
 
@@ -871,8 +880,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 494ee1e203b24724cabb7da536e6cf8c, type: 3}
-  Name: Join the troops
+  Name: JOIN THE TROOPS
   Duration: 10
+  CooldownDuration: 1
   Description: My army needs you!
 --- !u!114 &114802330677538790
 MonoBehaviour:
@@ -886,8 +896,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 542a2d32c84c9974fa3c8284029fecc3, type: 3}
-  Name: Agitation
+  Name: AGITATION
   Duration: 10
+  CooldownDuration: 1
   Description: 'Increases support in government-controlled cities.
 
     <i>Stand up for your rights!</i>
@@ -943,8 +954,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: CALL TO REBELLION
   Duration: 10
+  CooldownDuration: 1
   Description: 'Doubt
 
 
@@ -974,8 +986,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: SABOTAGE
   Duration: 10
+  CooldownDuration: 1
   Description: '<i>Defeat the tyranny!</i>
 
     Appeals to rebel civilians to kill soldiers in loyalist cities.'
@@ -991,6 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Poster: {fileID: 21300000, guid: 27a9b4aff9eb792469ea3e53ce93c079, type: 3}
-  Name: Call to rebellion
+  Name: DESERTERS
   Duration: 10
+  CooldownDuration: 1
   Description: Deserteurs
