@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: FXPROP_Resistance
   m_EditorClassIdentifier: 
   Id: Resistance
-  ParticlePrefab: {fileID: 1583761312551838, guid: ede3f1d9707e7524d8e0103276a6b89a,
+  ParticlePrefab: {fileID: 1583761312551838, guid: 3701b1840af3cc84687ab9396ec7b6c2,
     type: 2}
   MaxInstance: 1
