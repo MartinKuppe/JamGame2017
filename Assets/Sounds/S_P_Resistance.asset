@@ -15,6 +15,6 @@ MonoBehaviour:
   AudioClip: {fileID: 8300000, guid: f9e03a7cb84ebd1499c9a16ec1cc6a9d, type: 3}
   Layer: 2
   Loop: 0
-  Volume: 0.8
+  Volume: 0.73
   Pitch: 1
   StereoPan: 0
