@@ -19,6 +19,8 @@ public class VictoryManager : Singleton<VictoryManager>
     private City[] _cities;
     private float _checkVictoryTimer = 0.0f;
 
+    private bool _soundPlayed = false;
+
     public void Awake()
     {
         _cities = FindObjectsOfType<City>();
@@ -40,12 +42,26 @@ public class VictoryManager : Singleton<VictoryManager>
         Time.timeScale = 0.0f;
         _defeatPanel.SetActive(true);
         _defeatText.text = message;
+
+        if(!_soundPlayed)
+        {
+            SoundSystem.ClearLayer(Layer.Atmosphere);
+            SoundSystem.Play("Defeat");
+            _soundPlayed = true;
+        }
     }
 
     public void Victory()
     {
         Time.timeScale = 0.0f;
         _victoryPanel.SetActive(true);
+
+        if (!_soundPlayed)
+        {
+            SoundSystem.ClearLayer(Layer.Atmosphere);
+            SoundSystem.Play("Victory");
+            _soundPlayed = true;
+        }
     }
 
     private void CheckVictory()

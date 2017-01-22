@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecece188ea7b5e641b7f84a624be68f7, type: 3}
+  m_Name: SoundSettings
+  m_EditorClassIdentifier: 
+  Master:
+    DefaultVolume: 1
+    VolumeCoef: 1
+  Layers:
+  - Volume:
+      DefaultVolume: 1
+      VolumeCoef: 0.27
+  - Volume:
+      DefaultVolume: 1
+      VolumeCoef: 0.1
+  - Volume:
+      DefaultVolume: 1
+      VolumeCoef: 0.12
+  Sounds:
+  - {fileID: 11400000, guid: 8f1032f36ea8bf24789b75619e27d0b6, type: 2}
+  - {fileID: 11400000, guid: 20aae8e1c3e96284e93401f6352c7af1, type: 2}
+  - {fileID: 11400000, guid: 031ad48077673f24b90a9917aedb93f9, type: 2}
+  - {fileID: 11400000, guid: 6134b559a3a7648438202d6d70cf0b2c, type: 2}
+  - {fileID: 11400000, guid: b0037f4e4561af34bbfd632858ba2e9f, type: 2}
+  - {fileID: 11400000, guid: 4f7f2fcb80417b44dac2c9a68fb2c4a1, type: 2}
+  - {fileID: 11400000, guid: baaf99c4df292e44f921c2c9c0d147e6, type: 2}
+  - {fileID: 11400000, guid: f8eea68c7bdc4fa45b93dc8a4398346b, type: 2}
+  - {fileID: 11400000, guid: 325a428e448daea44834218b8b7bb5b9, type: 2}
+  - {fileID: 11400000, guid: 2d0aad7a3ae7b6d4aa74207ce1015ebf, type: 2}
+  - {fileID: 11400000, guid: 5448d111d4d918c4196b7217d3ae553f, type: 2}
