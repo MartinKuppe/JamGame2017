@@ -46,6 +46,8 @@ public class VictoryManager : Singleton<VictoryManager>
         if(!_soundPlayed)
         {
             SoundSystem.ClearLayer(Layer.Atmosphere);
+            SoundSystem.ClearLayer(Layer.SoundEffects);
+            SoundSystem.ClearLayer(Layer.UI);
             SoundSystem.Play("Defeat");
             _soundPlayed = true;
         }
@@ -59,6 +61,8 @@ public class VictoryManager : Singleton<VictoryManager>
         if (!_soundPlayed)
         {
             SoundSystem.ClearLayer(Layer.Atmosphere);
+            SoundSystem.ClearLayer(Layer.SoundEffects);
+            SoundSystem.ClearLayer(Layer.UI);
             SoundSystem.Play("Victory");
             _soundPlayed = true;
         }
