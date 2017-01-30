@@ -26,7 +26,7 @@ public class PauseMenu : Singleton<PauseMenu> {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Escape))
         {
             if(!IsShown)
             {
